@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:layout_marginBottom="20dp"
+    android:background="#ffffff">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/cool" />
+
+    <TextView
+        android:id="@+id/naame"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:hint="Name"
+        android:textSize="25sp"
+        android:layout_alignTop="@+id/circleImageView"
+        android:layout_toRightOf="@+id/circleImageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/to_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/naame"
+        android:layout_alignStart="@+id/naame"
+        android:layout_centerVertical="true"
+        android:hint="To"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/to_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To"
+        android:layout_below="@+id/to_display"
+        android:layout_alignLeft="@+id/to_display"
+        android:layout_alignStart="@+id/to_display"
+        android:layout_above="@+id/from_display" />
+
+    <TextView
+        android:id="@+id/from_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/circleImageView"
+        android:layout_alignLeft="@+id/to_word"
+        android:layout_alignStart="@+id/to_word"
+        android:hint="From"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/date_display"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/from_display"
+        android:layout_alignStart="@+id/from_display"
+        android:layout_below="@+id/from_display"
+        android:hint="Date" />
+
+    <TextView
+        android:id="@+id/time_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/date_display"
+        android:layout_marginLeft="71dp"
+        android:layout_marginStart="71dp"
+        android:layout_toEndOf="@+id/date_display"
+        android:layout_toRightOf="@+id/date_display"
+        android:hint="Time" />
+
+</RelativeLayout>

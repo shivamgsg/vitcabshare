@@ -1,0 +1,40 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mridul.vitcabshare.Feedback">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/send_default_email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:text="mridulagarwal8@gmail.com"/>
+    <EditText
+        android:id="@+id/enter_message"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="Send us your suggestion or feedback........."
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:lines="10"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/send_default_email"
+        android:textSize="15sp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_send_email"
+            android:layout_below="@+id/enter_message"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="150dp"
+            android:text="Submit"/>
+    </RelativeLayout>
+
+</FrameLayout>

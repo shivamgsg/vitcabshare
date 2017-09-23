@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "699104120628",
+    "firebase_url": "https://vitcab-9d33b.firebaseio.com",
+    "project_id": "vitcab-9d33b",
+    "storage_bucket": "vitcab-9d33b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699104120628:android:08a2c7c3049e8462",
+        "android_client_info": {
+          "package_name": "com.example.mridul.vitcabshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "699104120628-ts021urbf4k4jkckdr76h093kjp5mfg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdr8YmGZVBPWi2lqoQjuFOa4MFZG7GRy0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

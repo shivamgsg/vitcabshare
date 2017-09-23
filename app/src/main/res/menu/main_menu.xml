@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group_1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/edit_travel"
+            android:title="Edit Travel Request" />
+
+        <item
+            android:id="@+id/request"
+            android:title="Request" />
+
+        <item
+            android:id="@+id/show_all"
+            android:title="Show all" />
+
+    </group>
+
+    <group
+        android:id="@+id/group_2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/review"
+            android:title="Review" />
+        <item
+            android:id="@+id/account"
+            android:title="Account"/>
+
+    </group>
+    <group
+        android:id="@+id/group_3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/aboutus"
+            android:title="About Us" />
+        <item
+            android:id="@+id/privacy"
+            android:title="Privacy" />
+        <item
+            android:id="@+id/opensou"
+            android:title="Open Source Licenses" />
+        </group>
+    <group
+        android:id="@+id/group_4"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/Logout"
+            android:title="Logout" />
+    </group>
+
+</menu>

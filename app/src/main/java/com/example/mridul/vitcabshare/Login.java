@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity {
         appCompatButtonLogin = (AppCompatButton) findViewById(R.id.button_sign_in);
         textViewLinkRegister = (AppCompatTextView) findViewById(R.id.button_sign_up2);
         processdialog1=new ProgressDialog(this);
-        mDatebase= FirebaseDatabase.getInstance().getReference().child("user");
+        mDatebase= FirebaseDatabase.getInstance().getReference().child("travel");
 
         appCompatButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override

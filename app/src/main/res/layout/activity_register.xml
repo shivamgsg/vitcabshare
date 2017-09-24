@@ -1,8 +1,7 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent"    >
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -11,8 +10,7 @@
         android:id="@+id/linear_reg">
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:layout_marginTop="0dp"
+            android:layout_height="100dp"
             android:src="@drawable/applogo"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
@@ -29,7 +27,7 @@
             android:id="@+id/textInputLayoutName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="5dp">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/textInputEditTextName"
@@ -44,7 +42,7 @@
             android:id="@+id/textInputLayoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="5dp">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/textInputEditTextEmail"
@@ -59,7 +57,7 @@
             android:id="@+id/textInputLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="5dp">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/textInputEditTextPassword"
@@ -69,11 +67,11 @@
                 android:inputType="textPassword"
                 android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rel1_reg"
-            android:layout_centerHorizontal="true">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/rel1_reg"-->
+            <!--android:layout_centerHorizontal="true">-->
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/button_register"
                 android:layout_width="150dp"
@@ -83,24 +81,25 @@
                 android:textColor="@color/cardview_dark_background"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="9dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="15dp"
                 android:text="Register" />
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/button_sign_up"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="2dp"
                 android:layout_alignParentBottom="true"
                 android:gravity="center"
                 android:text="Already a member? Login"
                 android:textSize="16sp" />
 
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
 
 
 
     </android.support.v7.widget.LinearLayoutCompat>
 
-</android.support.v4.widget.NestedScrollView>
+</RelativeLayout>

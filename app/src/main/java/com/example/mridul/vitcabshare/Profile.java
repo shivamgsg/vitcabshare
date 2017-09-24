@@ -41,23 +41,29 @@ public class Profile extends AppCompatActivity {
     private FirebaseUser mcurrent_user;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
         final String user_id=getIntent().getStringExtra("user_id");
 
+
         mRootRef=FirebaseDatabase.getInstance().getReference();
-        muserdatabase= FirebaseDatabase.getInstance().getReference().child("travel").child(user_id);
+        muserdatabase=FirebaseDatabase.getInstance().getReference().child("travel").child(user_id);
         msendreq=FirebaseDatabase.getInstance().getReference().child("Request");
         mreceivedreq=FirebaseDatabase.getInstance().getReference().child("Accept");
         notification=FirebaseDatabase.getInstance().getReference().child("Notification");
 
+
+
         mcurrent_user= FirebaseAuth.getInstance().getCurrentUser();
 
+
+
         textView=(TextView) findViewById(R.id.name_profile);
-        textView.setText(user_id);
         imageView=(ImageView) findViewById(R.id.pic);
         button=(Button) findViewById(R.id.button_send_req);
 
@@ -68,8 +74,8 @@ public class Profile extends AppCompatActivity {
         muserdatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String display=dataSnapshot.child("name").getValue().toString();
-                String image=dataSnapshot.child("image").getValue().toString();
+                String display = dataSnapshot.child("name").getValue().toString();
+                String image = dataSnapshot.child("image").getValue().toString();
 
                 textView.setText(display);
                 Picasso.with(Profile.this).load(image).placeholder(R.drawable.cool).into(imageView);
@@ -77,17 +83,37 @@ public class Profile extends AppCompatActivity {
                 msendreq.child(mcurrent_user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.hasChild(user_id)){
-                            String req_type=dataSnapshot.child(user_id).child("request_type").getValue().toString();
-                            if(req_type.equals("received")){
-                                mcurrent_state="req_received";
+                        if (dataSnapshot.hasChild(user_id)) {
+                            String req_type = dataSnapshot.child(user_id).child("request_type").getValue().toString();
+                            if (req_type.equals("received")) {
+                                mcurrent_state = "req_received";
                                 button.setText("Accept Request");
-                            }
-                            else if(req_type.equals("sent"))
-                            {
-                                mcurrent_state="req_sent";
+                            } else if (req_type.equals("sent")) {
+                                mcurrent_state = "req_sent";
                                 button.setText("Cancel Request");
                             }
+                        }
+                        else{
+                            mreceivedreq.child(mcurrent_user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.hasChild(user_id)) {
+                                        String hell=dataSnapshot.child(user_id).child("h").getValue().toString();
+                                        if(hell.equals("hello")){
+                                            mcurrent_state="accept";
+                                            button.setText("Request Accepted");
+                                            button.setEnabled(false);
+                                        }
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
                         }
                     }
 
@@ -96,8 +122,8 @@ public class Profile extends AppCompatActivity {
 
                     }
                 });
-            }
 
+            }
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -154,17 +180,23 @@ public class Profile extends AppCompatActivity {
                 if(mcurrent_state.equals("req_received")){
                     mreceivedreq.child(mcurrent_user.getUid()).child(user_id).child("h").setValue("hello").addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
-                        public void onSuccess(Void aVoid) {
-                            msendreq.child(mcurrent_user.getUid()).child(user_id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            public void onSuccess(Void aVoid) {
+
+                            mreceivedreq.child(user_id).child(mcurrent_user.getUid()).child("h").setValue("hello").addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    msendreq.child(user_id).child(mcurrent_user.getUid()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    msendreq.child(mcurrent_user.getUid()).child(user_id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            button.setEnabled(true);
-                                            mcurrent_state="accept";
-                                            button.setText("Request Accepted");
+                                            msendreq.child(user_id).child(mcurrent_user.getUid()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    button.setEnabled(false);
+                                                    mcurrent_state="accept";
+                                                    button.setText("Request Accepted");
 
+                                                    }
+                                            });
                                         }
                                     });
 

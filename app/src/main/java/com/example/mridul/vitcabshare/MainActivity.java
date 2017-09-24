@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         textView=(TextView) navigationView.getHeaderView(0).findViewById(R.id.username);
-//        FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
+//        final FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
 //        String uid=current_user.getUid();
 //        databaseReference= FirebaseDatabase.getInstance().getReference().child("user").child(uid);
 //        databaseReference.addValueEventListener(new ValueEventListener() {

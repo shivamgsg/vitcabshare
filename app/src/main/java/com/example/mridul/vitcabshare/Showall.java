@@ -82,12 +82,8 @@ private RecyclerView recyclerView;
 
                         }
                     });
-
-
                 }
         };
-        int position=0;
-        firebaseRecyclerAdapter.notifyItemChanged(position);
         recyclerView.setAdapter(firebaseRecyclerAdapter);
     }
     public static  class UserViewHolder extends RecyclerView.ViewHolder{

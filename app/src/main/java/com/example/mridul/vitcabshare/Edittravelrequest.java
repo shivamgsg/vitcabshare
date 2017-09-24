@@ -98,39 +98,6 @@ public class Edittravelrequest extends Fragment {
         });
         final FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
         final String uid=current_user.getUid();
-        mdatabase= FirebaseDatabase.getInstance().getReferenceFromUrl("https://vitcab-9d33b.firebaseio.com/user/"+uid+"/name");
-
-        final TextView textView=(TextView) rootView.findViewById(R.id.name_user);
-        final TextView textView1=(TextView) rootView.findViewById(R.id.email_user);
-
-
-        mdatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String name=dataSnapshot.getValue().toString();
-                textView.setText(name);
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        ndatabse= FirebaseDatabase.getInstance().getReferenceFromUrl("https://vitcab-9d33b.firebaseio.com/user/"+uid+"/email-id");
-        ndatabse.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String  email=dataSnapshot.getValue().toString();
-                textView1.setText(email);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
         Button button = (Button) rootView.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,8 +106,6 @@ public class Edittravelrequest extends Fragment {
                 String from = spinner1.getSelectedItem().toString();
                 String date = editText.getText().toString();
                 String time = editText1.getText().toString();
-                String name=textView.getText().toString();
-                String email=textView1.getText().toString();
 
                 FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
                 String uid=current_user.getUid();
@@ -164,11 +129,9 @@ public class Edittravelrequest extends Fragment {
                     datamap.put("from", from);
                     datamap.put("date", date);
                     datamap.put("time", time);
-                    datamap.put("name",name);
-                    datamap.put("email",email);
                     datamap.put("image","default");
                     datamap.put("thumb_image","default");
-                    databaseReference.setValue(datamap);
+                    databaseReference.updateChildren(datamap);
                     Toast.makeText(getContext(),"Your Request have been sent",Toast.LENGTH_LONG).show();
                 }
 

@@ -25,9 +25,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
@@ -42,6 +46,7 @@ public class Login extends AppCompatActivity {
     private ProgressDialog processdialog1;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatebase;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +68,10 @@ public class Login extends AppCompatActivity {
         appCompatButtonLogin = (AppCompatButton) findViewById(R.id.button_sign_in);
         textViewLinkRegister = (AppCompatTextView) findViewById(R.id.button_sign_up2);
         processdialog1=new ProgressDialog(this);
-        mDatebase= FirebaseDatabase.getInstance().getReference().child("user");
+        FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
+        String uid=current_user.getUid();
+        mDatebase= FirebaseDatabase.getInstance().getReference().child("user").child(uid);
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("travel").child(uid);
 
         appCompatButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +115,13 @@ mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCom
             processdialog1.dismiss();
             String current_user_id=mAuth.getCurrentUser().getUid();
             String token_id= FirebaseInstanceId.getInstance().getToken();
+            Map datama=new HashMap<String, String>();
+            datama.put("token",token_id);
+            Map datamap=new HashMap<String, String>();
+            datamap.put("token",token_id);
 
-            mDatebase.child(current_user_id).child("token").setValue(token_id).addOnSuccessListener(new OnSuccessListener<Void>() {
+            mDatebase.updateChildren(datama);
+            databaseReference.updateChildren(datamap).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
                     Intent mainintent = new Intent(Login.this, MainActivity.class);

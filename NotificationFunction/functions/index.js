@@ -25,8 +25,8 @@ return fromuser.then(fromuserResult =>{
   const from_user_id=fromuserResult.val().from;
   console.log('You have a new notification:',from_user_id);
 
-  const userQuery =admin.database().ref(`user/${from_user_id}/name`).once('value');
-  const deviceToken=admin.database().ref(`/user/${user_id}/token`).once('value');
+  const userQuery =admin.database().ref(`travel/${from_user_id}/name`).once('value');
+  const deviceToken=admin.database().ref(`/travel/${user_id}/token`).once('value');
 
   return Promise.all([userQuery,deviceToken]).then(result =>{
 

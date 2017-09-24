@@ -18,12 +18,14 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         super.onMessageReceived(remoteMessage);
         String notification_title=remoteMessage.getNotification().getTitle();
         String notification_message=remoteMessage.getNotification().getBody();
+
         String click_action=remoteMessage.getNotification().getClickAction();
+
         String from_user_id=remoteMessage.getData().get("from_user_id");
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.cool)
+                        .setSmallIcon(R.drawable.applogo)
                         .setContentTitle(notification_title)
                         .setContentText(notification_message);
 

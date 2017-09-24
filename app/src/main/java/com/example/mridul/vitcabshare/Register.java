@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +32,7 @@ import java.util.HashMap;
 
 public class Register extends AppCompatActivity {
 
-    private NestedScrollView nestedScrollView;
+    private RelativeLayout nestedScrollView;
     private FirebaseAuth mAuth;
     private TextInputLayout textInputLayoutName;
     private TextInputLayout textInputLayoutEmail;
@@ -45,6 +46,7 @@ public class Register extends AppCompatActivity {
     private AppCompatTextView appCompatTextViewLoginLink;
     private ProgressDialog progressDialog;
     private DatabaseReference mdatabase;
+    private DatabaseReference databaseReference;
 
 
 
@@ -52,7 +54,7 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
+        nestedScrollView = (RelativeLayout) findViewById(R.id.nestedScrollView);
 mAuth=FirebaseAuth.getInstance();
         textInputLayoutName = (TextInputLayout) findViewById(R.id.textInputLayoutName);
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
@@ -67,9 +69,10 @@ mAuth=FirebaseAuth.getInstance();
         int width = display.getWidth();
         int height = display.getHeight();
         LinearLayoutCompat myl=(LinearLayoutCompat) findViewById(R.id.linear_reg);
-        myl.setPadding(width/6,height/15,width/6,height/5);
-        RelativeLayout mylay=(RelativeLayout) findViewById(R.id.rel1_reg);
-        mylay.setPadding(width/6,0,width/6,0);
+
+        myl.setPadding(width/6,height/12,width/6,height/10);
+//        RelativeLayout mylay=(RelativeLayout) findViewById(R.id.rel1_reg);
+//        mylay.setPadding(width/6,0,width/6,0);
         AppCompatTextView t=(AppCompatTextView) findViewById(R.id.button_sign_up) ;
         t.setPadding(width/50,height/40,width/50,0);
 
@@ -128,15 +131,27 @@ mAuth=FirebaseAuth.getInstance();
                             String uid=current_user.getUid();
 
                             mdatabase=FirebaseDatabase.getInstance().getReference().child("user").child(uid);
+                            databaseReference=FirebaseDatabase.getInstance().getReference().child("travel").child(uid);
 
                             String device_token= FirebaseInstanceId.getInstance().getToken();
 
                             HashMap<String,String> datamap=new HashMap<String, String>();
                             datamap.put("name",name);
                             datamap.put("email-id",email);
-//                            datamap.put("image","default");
 //                            datamap.put("thumb_image","default");
                             datamap.put("token",device_token);
+                            HashMap<String,String> datama=new HashMap<String, String>();
+                            datama.put("token",device_token);
+                            datama.put("name",name);
+                            datama.put("email",email);
+                            datama.put("image","default");
+                            datama.put("thumb_image","default");
+
+                            databaseReference.setValue(datama).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                }
+                            });
                             mdatabase.setValue(datamap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

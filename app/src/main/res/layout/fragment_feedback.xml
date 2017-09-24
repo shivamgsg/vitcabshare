@@ -34,6 +34,7 @@
             android:layout_below="@+id/enter_message"
             android:layout_marginTop="150dp"
             android:layout_marginLeft="150dp"
+            android:background="@android:color/holo_red_light"
             android:text="Submit"/>
     </RelativeLayout>
 

@@ -139,13 +139,15 @@ mAuth=FirebaseAuth.getInstance();
                             HashMap<String,String> datamap=new HashMap<String, String>();
                             datamap.put("name",name);
                             datamap.put("email-id",email);
-//                            datamap.put("image","default");
 //                            datamap.put("thumb_image","default");
                             datamap.put("token",device_token);
                             HashMap<String,String> datama=new HashMap<String, String>();
                             datama.put("token",device_token);
                             datama.put("name",name);
                             datama.put("email",email);
+                            datama.put("image","default");
+                            datama.put("thumb_image","default");
+
                             databaseReference.setValue(datama).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

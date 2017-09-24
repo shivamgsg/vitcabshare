@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/VitCabShare.iml" filepath="$PROJECT_DIR$/VitCabShare.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vitcabshare.iml" filepath="$PROJECT_DIR$/vitcabshare.iml" />
     </modules>
   </component>
 </project>

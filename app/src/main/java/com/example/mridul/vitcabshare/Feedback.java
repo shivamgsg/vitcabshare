@@ -28,11 +28,13 @@ public class Feedback extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View root= inflater.inflate(R.layout.fragment_feedback, container, false);
 
         editText=(EditText) root.findViewById(R.id.send_default_email);
         editText1=(EditText) root.findViewById(R.id.enter_message);
         button=(Button) root.findViewById(R.id.button_send_email);
+
 
         editText.setEnabled(false);
 

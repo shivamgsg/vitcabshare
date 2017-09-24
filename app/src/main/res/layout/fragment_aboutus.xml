@@ -1,75 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#292c2f"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:id="@+id/rel_about">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_marginTop="-30dp"
-        android:src="@drawable/applogo"
+    tools:context="com.example.mridul.vitcabshare.Aboutus"
+    android:background="#292c2f">
+
+
+    <RelativeLayout
+        android:id="@+id/rel_about"
+        android:layout_width="match_parent"
+        android:layout_height="728dp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:src="@drawable/applogo"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FFFFFF"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="177dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerVertical="true"
+        android:layout_marginTop="120dp"
+        android:background="#292c2f"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mridul Agarwal"
-        android:textSize="23dp"
-        android:textColor="#EEEEEE"
-        android:layout_alignTop="@+id/profile_image"
-        android:layout_toRightOf="@+id/profile_image"
-        android:layout_toEndOf="@+id/profile_image"
-        android:layout_marginLeft="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="17dp" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/applogo" />
 
 
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_alignLeft="@+id/imageView3"
+            android:layout_alignStart="@+id/imageView3"
+            android:layout_below="@+id/imageView3"
+            android:src="@drawable/applogo"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Shivam Gupta"
-        android:textSize="23dp"
-        android:textColor="#EEEEEE"
-        android:layout_marginTop="33dp"
-        android:layout_alignTop="@+id/profile_image1"
-        android:layout_alignLeft="@+id/profile_image"
-        android:layout_alignStart="@+id/profile_image" />
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image1"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:src="@drawable/applogo"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FFFFFF"
-        android:layout_below="@+id/profile_image"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_marginTop="37dp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/imageView3"
+            android:layout_alignRight="@+id/imageView3"
+            android:layout_below="@+id/imageView3"
+            android:layout_marginTop="17dp"
+            android:text="Mridul Agarwal"
+            android:textColor="#EEEEEE"
+            android:textSize="23dp" />
 
-</RelativeLayout>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/profile_image"
+            android:layout_alignStart="@+id/profile_image"
+            android:layout_alignTop="@+id/profile_image1"
+            android:layout_marginTop="33dp"
+            android:text="Shivam Gupta"
+            android:textColor="#EEEEEE"
+            android:textSize="23dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image1"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_alignEnd="@+id/imageView3"
+            android:layout_alignRight="@+id/imageView3"
+            android:layout_below="@+id/profile_image"
+            android:layout_marginTop="37dp"
+            android:src="@drawable/applogo"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp" />
+
+    </RelativeLayout>
+</FrameLayout>

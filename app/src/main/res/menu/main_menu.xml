@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <group
         android:id="@+id/group_1"
         android:checkableBehavior="single">
         <item
             android:id="@+id/edit_travel"
-            android:title="Edit Travel Request" />
+            android:title="Edit Travel Request"
+            />
 
         <item
             android:id="@+id/request"

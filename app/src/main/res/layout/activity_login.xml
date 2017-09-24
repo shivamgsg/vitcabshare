@@ -2,7 +2,8 @@
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
     <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/linear_login"
@@ -23,19 +24,22 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Login"
-            android:textColor="#000000"
+            android:textColor="#EEEEEE"
             android:textSize="30sp" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="50dp"
+            android:textColor="#EEEEEE"
+            android:textColorHint="#EEEEEE">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/textInputEditTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#ffffff"
                 android:hint="Email"
                 android:inputType="text"
                 android:maxLines="1" />
@@ -45,12 +49,18 @@
             android:id="@+id/textInputLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:textColorHint="#EEEEEE"
+            android:textColor="#EEEEEE"
+
+
+            >
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/textInputEditTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#ffffff"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:maxLines="1" />
@@ -81,7 +91,8 @@
                 android:layout_marginTop="100dp"
                 android:gravity="center"
                 android:text="No account yet? Create one"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="#EEEEEE"/>
 
 
         </RelativeLayout>

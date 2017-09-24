@@ -3,6 +3,9 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:theme="@style/appBarTheme">
+    android:titleTextColor="#EEEEEE"
+    android:subtitleTextColor="#EEEEEE">
 
 </android.support.v7.widget.Toolbar>

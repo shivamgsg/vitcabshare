@@ -4,7 +4,7 @@
     android:layout_height="150dp"
     android:orientation="vertical"
     android:layout_marginBottom="20dp"
-    android:background="#ffffff">
+    android:background="#565555">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
         android:layout_width="100dp"
@@ -17,6 +17,8 @@
         android:id="@+id/naame"
         android:layout_width="150dp"
         android:layout_height="30dp"
+        android:textColor="#EEEEEE"
+        android:textColorHint="#EEEEEE"
         android:layout_marginLeft="23dp"
         android:layout_marginStart="23dp"
         android:hint="Name"
@@ -28,6 +30,8 @@
 
     <TextView
         android:id="@+id/to_display"
+        android:textColor="#EEEEEE"
+        android:textColorHint="#EEEEEE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/naame"
@@ -39,6 +43,8 @@
 
     <TextView
         android:id="@+id/to_word"
+        android:textColor="#EEEEEE"
+        android:textColorHint="#EEEEEE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="To"
@@ -49,6 +55,8 @@
 
     <TextView
         android:id="@+id/from_display"
+        android:textColor="#EEEEEE"
+        android:textColorHint="#EEEEEE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/circleImageView"
@@ -60,6 +68,8 @@
 
     <TextView
         android:id="@+id/date_display"
+        android:textColor="#EEEEEE"
+        android:textColorHint="#EEEEEE"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/from_display"
@@ -69,6 +79,8 @@
 
     <TextView
         android:id="@+id/time_display"
+        android:textColor="#EEEEEE"
+        android:textColorHint="#EEEEEE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/date_display"

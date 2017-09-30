@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "699104120628",
-    "firebase_url": "https://vitcab-9d33b.firebaseio.com",
-    "project_id": "vitcab-9d33b",
-    "storage_bucket": "vitcab-9d33b.appspot.com"
+    "project_number": "829378688518",
+    "firebase_url": "https://vit-sharecar.firebaseio.com",
+    "project_id": "vit-sharecar",
+    "storage_bucket": "vit-sharecar.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:699104120628:android:08a2c7c3049e8462",
+        "mobilesdk_app_id": "1:829378688518:android:a8d2dc1cc50a917f",
         "android_client_info": {
-          "package_name": "com.example.mridul.vitcabshare"
+          "package_name": "com.techifuzz.team.vitsharecar"
         }
       },
       "oauth_client": [
         {
-          "client_id": "699104120628-ts021urbf4k4jkckdr76h093kjp5mfg9.apps.googleusercontent.com",
+          "client_id": "829378688518-ej81fbgul2ud1lvbbuk57gt72j7mk6ph.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techifuzz.team.vitsharecar",
+            "certificate_hash": "34e8cc87c8fff671c3ad2d54fd362677048f4960"
+          }
+        },
+        {
+          "client_id": "829378688518-6qt8jhvmk3n1p85fck674f4gjbecl31v.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDdr8YmGZVBPWi2lqoQjuFOa4MFZG7GRy0"
+          "current_key": "AIzaSyDies6twUyI6li7UbPdEy_q8CR5iBNn3RE"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829378688518-6qt8jhvmk3n1p85fck674f4gjbecl31v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

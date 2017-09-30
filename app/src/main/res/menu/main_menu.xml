@@ -43,13 +43,17 @@
         <item
             android:id="@+id/opensou"
             android:title="Open Source Licenses" />
-        </group>
+    </group>
     <group
         android:id="@+id/group_4"
         android:checkableBehavior="single">
         <item
             android:id="@+id/Logout"
+            android:layout_alignBottom="@+id/button_reg"
+            android:layout_alignLeft="@+id/start"
+            android:layout_marginLeft="138dp"
             android:title="Logout" />
+
     </group>
 
 </menu>

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mridul.vitcabshare.Account">
+    android:id="@+id/frag">
 
    <RelativeLayout
        android:layout_width="match_parent"
@@ -18,7 +18,7 @@
           app:civ_border_width="2dp"
           app:civ_border_color="#FF000000"
           android:layout_marginTop="35dp"
-          android:layout_marginLeft="100dp"/>
+          android:layout_centerHorizontal="true"/>
        <TextView
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
@@ -26,6 +26,7 @@
            android:id="@+id/name_display"
            android:textSize="30dp"
            android:textColor="#fff"
+           android:layout_centerHorizontal="true"
            android:layout_below="@+id/profile_image1"
            android:gravity="center"
            android:layout_marginTop="50dp"/>

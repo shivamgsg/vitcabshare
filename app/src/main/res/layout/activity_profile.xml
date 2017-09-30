@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mridul.vitcabshare.Profile"
+    android:background="#292c2f"
+    tools:context="com.techifuzz.team.vitsharecar.Profile"
     android:id="@+id/h">
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/pic"
-        android:layout_centerHorizontal="true"
-        android:background="#292c2f"/>
+        android:background="#292c2f"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
@@ -19,13 +21,14 @@
        android:background="#292c2f">
     <TextView
        android:layout_width="match_parent"
-       android:layout_height="30dp"
+       android:layout_height="60dp"
        android:id="@+id/name_profile"
-       android:layout_below="@+id/pic"
        android:hint="name"
+        android:textColorHint="#EEEEEE"
+        android:gravity="center"
        android:textAlignment="center"
-       android:textSize="25sp"
-       android:textColor="#fff"
+       android:textSize="40sp"
+       android:textColor="#EEEEEE"
         android:layout_marginTop="40dp"/>
        <Button
            android:id="@+id/button_send_req"
@@ -33,6 +36,7 @@
            android:layout_height="50dp"
            android:background="@android:color/holo_red_light"
            android:gravity="center"
+           android:textSize="15sp"
            android:text="Send Request"
            android:textColor="@color/cardview_dark_background"
            android:layout_alignParentBottom="true"

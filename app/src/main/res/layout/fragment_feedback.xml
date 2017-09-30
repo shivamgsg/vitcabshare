@@ -2,57 +2,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mridul.vitcabshare.Feedback"
     android:background="#292c2f">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/feedback"
-        >
-
-    <EditText
-
-        android:id="@+id/send_default_email"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:textSize="15sp"
-        android:textColor="#EEEEEE"
-        android:backgroundTint="#ffffff"
-        android:textColorHint="#EEEEEE"
-        android:text="mridulagarwal8@gmail.com"/>
-    <EditText
-        android:id="@+id/enter_message"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:hint="Send us your suggestion or feedback........."
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:textColor="#EEEEEE"
-        android:textColorHint="#EEEEEE"
-        android:lines="10"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:backgroundTint="#ffffff"
-        android:inputType="textMultiLine"
-        android:layout_below="@+id/send_default_email"
-        android:textSize="15sp" />
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/enter_message"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#ffffff"
+            android:gravity="center"
+            android:hint="Send us your suggestion or feedback........."
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:textColor="#EEEEEE"
+            android:textColorHint="#EEEEEE"
+            android:textSize="15sp" />
+
         <Button
+            android:id="@+id/button_send_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_send_email"
             android:layout_below="@+id/enter_message"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="150dp"
             android:background="@android:color/holo_red_light"
             android:gravity="center"
-            android:textColor="@color/cardview_dark_background"
-            android:layout_marginTop="150dp"
-            android:layout_marginLeft="150dp"
-            android:background="@android:color/holo_red_light"
-            android:text="Submit"/>
+            android:text="Submit"
+            android:textColor="@color/cardview_dark_background" />
     </RelativeLayout>
 
 </FrameLayout>

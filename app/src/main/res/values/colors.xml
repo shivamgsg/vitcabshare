@@ -3,4 +3,7 @@
     <color name="colorPrimary">#1e2126</color>
     <color name="colorPrimaryDark">#222222</color>
     <color name="colorAccent">@android:color/holo_red_light</color>
+    <color name="cardview_dark_background">#FF424242</color>
+    <color name="cardview_light_background">#FFFFFFFF</color>
+    <color name="cardview_shadow_end_color">#03000000</color>
 </resources>

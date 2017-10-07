@@ -7,40 +7,42 @@
     tools:context="com.techifuzz.team.vitsharecar.Profile"
     android:id="@+id/h">
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="30dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/pic"
-        android:background="#292c2f"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" />
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:layout_marginTop="200dp"
-       android:background="#292c2f">
-    <TextView
-       android:layout_width="match_parent"
-       android:layout_height="60dp"
-       android:id="@+id/name_profile"
-       android:hint="name"
-        android:textColorHint="#EEEEEE"
-        android:gravity="center"
-       android:textAlignment="center"
-       android:textSize="40sp"
-       android:textColor="#EEEEEE"
-        android:layout_marginTop="40dp"/>
-       <Button
-           android:id="@+id/button_send_req"
-           android:layout_width="150dp"
-           android:layout_height="50dp"
-           android:background="@android:color/holo_red_light"
-           android:gravity="center"
-           android:textSize="15sp"
-           android:text="Send Request"
-           android:textColor="@color/cardview_dark_background"
-           android:layout_alignParentBottom="true"
-           android:layout_centerHorizontal="true"
-           android:layout_marginBottom="117dp" />
-   </RelativeLayout>
+        android:layout_width="200dp"
+        android:layout_height="160dp"
+        android:src="@drawable/cool"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="220dp"
+        android:background="#292c2f">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/name_profile"
+            android:hint="name"
+            android:textColorHint="#EEEEEE"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:textColor="#EEEEEE"
+            android:layout_marginTop="30dp"/>
+        <Button
+            android:id="@+id/button_send_req"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_light"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:text="Send Request"
+            android:textColor="@color/cardview_dark_background"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="117dp" />
+    </RelativeLayout>
 </RelativeLayout>

@@ -7,16 +7,19 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/edit_travel"
-            android:title="Edit Travel Request"
+            android:title="New Request"
             />
 
         <item
             android:id="@+id/request"
-            android:title="Request" />
+            android:title="My Requests" />
+
+        <item android:id="@+id/chat"
+            android:title="Chat"/>
 
         <item
             android:id="@+id/show_all"
-            android:title="Show all" />
+            android:title="Show all Requests" />
 
     </group>
 
@@ -24,11 +27,11 @@
         android:id="@+id/group_2"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/review"
-            android:title="Review" />
-        <item
             android:id="@+id/account"
             android:title="Account"/>
+        <item
+            android:id="@+id/review"
+            android:title="Feedback" />
 
     </group>
     <group
@@ -49,11 +52,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/Logout"
-            android:layout_alignBottom="@+id/button_reg"
-            android:layout_alignLeft="@+id/start"
-            android:layout_marginLeft="138dp"
             android:title="Logout" />
-
     </group>
 
 </menu>

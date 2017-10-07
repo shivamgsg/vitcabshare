@@ -6,6 +6,19 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <supports-screens>
+
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true"
+
+    </supports-screens>
+
 
     <application
         android:allowBackup="true"
@@ -20,13 +33,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".StartActivity" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
@@ -36,12 +43,24 @@
         <activity android:name=".Profile">
             <intent-filter>
                 <action android:name="in.app.mridul.vitcabshare_TARGET_NOTIFICATION" />
-
                 <category android:name="android.intent.category.ALTERNATIVE" />
             </intent-filter>
         </activity>
         <activity android:name=".Google_phonenumber" />
-        <activity android:name=".Password_reset"></activity>
+        <activity android:name=".Password_reset" />
+        <activity android:name=".Viewrequest" />
+        <activity android:name=".Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ChatActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.techifuzz.team.vitsharecar.ChatActivity" />
+        </activity>
+        <activity android:name=".Requestfinal"></activity>
     </application>
 
 </manifest>

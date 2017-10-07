@@ -9,7 +9,6 @@
     <com.wenchao.cardstack.CardStack
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_below="@+id/start"
         android:layout_height="550dp"
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -33,7 +32,6 @@
         android:layout_marginRight="20dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/start"
         android:layout_marginLeft="32dp" />
 
 </RelativeLayout>

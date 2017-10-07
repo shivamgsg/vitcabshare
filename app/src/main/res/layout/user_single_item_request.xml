@@ -3,7 +3,8 @@
     android:layout_height="130dp"
     android:orientation="vertical"
     android:layout_marginBottom="25dp"
-    android:background="#565555">
+    android:background="@drawable/shape"
+    android:layout_marginTop="4dp">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
         android:layout_width="100dp"
@@ -16,14 +17,14 @@
     <TextView
         android:id="@+id/name2"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="32dp"
         android:layout_marginLeft="17dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="10dp"
         android:hint="Name"
-        android:textColor="#EEEEEE"
-        android:textColorHint="#EEEEEE"
-        android:textSize="25sp"
+        android:textColor="#444444"
+        android:textColorHint="#444444"
+        android:textSize="23sp"
         android:layout_alignTop="@+id/circleImageView"
         android:layout_toRightOf="@+id/circleImageView"
         android:layout_alignParentRight="true"
@@ -34,8 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_marginTop="12dp"
-        android:textColor="#EEEEEE"
-        android:textColorHint="#EEEEEE"
+        android:textColor="#444444"
+        android:textColorHint="#444444"
         android:hint="Email"
         android:textSize="20sp"
         android:layout_below="@+id/name2"
@@ -48,8 +49,8 @@
         android:layout_alignLeft="@+id/textView2_email"
         android:hint="Number"
         android:layout_marginTop="5dp"
-        android:textColorHint="#EEEEEE"
-        android:textColor="#EEEEEE"
+        android:textColor="#444444"
+        android:textColorHint="#444444"
         android:textSize="20sp"/>
 
 

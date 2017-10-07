@@ -3,7 +3,7 @@
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="#020202">
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -110,19 +110,6 @@
                 />
         </android.support.design.widget.TextInputLayout>
 
-
-        <!--<android.support.v7.widget.AppCompatTextView-->
-            <!--android:id="@+id/button_sign_up"-->
-            <!--android:layout_width="250dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="2dp"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:gravity="center"-->
-            <!--android:text="BACK"-->
-            <!--android:textSize="14sp"-->
-            <!--android:textColor="#EEEEEE"-->
-            <!--/>-->
-
     </android.support.v7.widget.LinearLayoutCompat>
 
     <RelativeLayout
@@ -130,7 +117,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/relativeLayout"
         android:layout_below="@+id/linear_reg"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="10dp">
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/button_register"
@@ -170,11 +158,11 @@
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/google_button"
-            android:layout_width="170dp"
-            android:layout_height="80dp"
+            android:layout_width="130dp"
+            android:layout_height="70dp"
+            app:buttonSize="icon_only"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="67dp"
-            >
+            android:layout_marginTop="67dp">
 
         </com.google.android.gms.common.SignInButton>
     </RelativeLayout>

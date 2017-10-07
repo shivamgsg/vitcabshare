@@ -3,17 +3,19 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
+    android:background="#153243"
     android:theme="@style/appBarTheme"
     android:titleTextColor="#EEEEEE"
     android:subtitleTextColor="#EEEEEE">
     <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/pinButton"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/if_user_309035"
+        android:layout_marginRight="10dp"
         android:layout_gravity="right"
+        android:background="#153243"
+        android:src="@drawable/acc1"
         android:clickable="true"/>
 
 </android.support.v7.widget.Toolbar>

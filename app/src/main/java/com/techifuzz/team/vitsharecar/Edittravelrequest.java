@@ -3,6 +3,7 @@ package com.techifuzz.team.vitsharecar;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +39,8 @@ public class Edittravelrequest extends Fragment {
     private DatabaseReference mdatabase;
     private DatabaseReference databaseReference;
     private DatabaseReference ndatabse;
+    private Button button,button1,button2;
+    private DatabaseReference getMdatabase;
     public Edittravelrequest() {
         // Required empty public constructor
     }
@@ -61,6 +65,7 @@ public class Edittravelrequest extends Fragment {
         spinner.setAdapter(adapter);
         spinner1.setAdapter(adapter1);
         final TextView editText = (TextView) rootView.findViewById(R.id.edit_travel_date);
+        editText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.cal, 0, 0, 0);
         editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,18 +73,23 @@ public class Edittravelrequest extends Fragment {
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+               DatePickerDialog datePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
                         String date = String.valueOf(dayOfMonth) + "-" + String.valueOf(MONTHS[monthOfYear])
                                 + "-" + String.valueOf(year);
                         editText.setText(date);
                     }
+
                 }, yy, mm, dd);
+                datePicker.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
                 datePicker.show();
             }
         });
         final TextView editText1 = (TextView) rootView.findViewById(R.id.edit_travel_time);
+        editText1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.clcok, 0, 0, 0);
         editText1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +111,7 @@ public class Edittravelrequest extends Fragment {
         if(current_user!=null) {
             final String uid = current_user.getUid();
         }
-        Button button = (Button) rootView.findViewById(R.id.button);
+        button = (Button) rootView.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,6 +169,47 @@ public class Edittravelrequest extends Fragment {
                 });
             }
         });
+        button1=(Button) rootView.findViewById(R.id.viewrequest);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(),Viewrequest.class);
+                startActivity(intent);
+            }
+        });
+        button2=(Button) rootView.findViewById(R.id.delereq);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = current_user.getUid();
+                getMdatabase=FirebaseDatabase.getInstance().getReference().child("travel").child(uid);
+                getMdatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            getMdatabase.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getContext(),"Request successfully deleted",Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(),"You have no request",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
         return rootView;
         }
 }

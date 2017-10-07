@@ -95,9 +95,14 @@ private RecyclerView recyclerView;
                                 @Override
                                 public void onClick(View v) {
                                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                    Intent profile = new Intent(getContext(), Profile.class);
-                                    profile.putExtra("user_id", user_id);
+                                    if(uid.equals(user_id)){
+                                        Toast.makeText(getContext(),"You cannot send request to yourself",Toast.LENGTH_SHORT).show();
+                                    }
+                                    else {
+                                        Intent profile = new Intent(getContext(), Profile.class);
+                                        profile.putExtra("user_id", user_id);
                                         startActivity(profile);
+                                    }
                                 }
                             });
                         }
@@ -128,23 +133,25 @@ private RecyclerView recyclerView;
     }
     public void setTo(String to)
     {
-        TextView username1=(TextView) mview.findViewById(R.id.to_display);
+        TextView username1=(TextView) mview.findViewById(R.id.from_display);
         username1.setText(to);
     }
         public void setFrom(String from)
         {
-            TextView username2=(TextView) mview.findViewById(R.id.from_display);
+            TextView username2=(TextView) mview.findViewById(R.id.to_display);
             username2.setText(from);
         }
         public void setDate(String date)
         {
             TextView username3=(TextView) mview.findViewById(R.id.date_display);
             username3.setText(date);
+            username3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.cal, 0, 0, 0);
         }
         public void setTime(String time)
         {
             TextView username4=(TextView) mview.findViewById(R.id.time_display);
             username4.setText(time);
+            username4.setCompoundDrawablesWithIntrinsicBounds(R.drawable.clcok, 0, 0, 0);
         }
         public void setThumb_image(String thumb_image, Context context)
         {

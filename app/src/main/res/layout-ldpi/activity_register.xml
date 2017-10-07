@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#020202">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linear_reg">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/applogo"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create a New Account"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textColor="#EEEEEE" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#EEEEEE"
+            android:textColorHint="#EEEEEE"
+            android:layout_marginTop="5dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:backgroundTint="#EEEEEE"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#EEEEEE"
+                android:inputType="textCapSentences"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#EEEEEE"
+            android:textColorHint="#EEEEEE"
+            android:layout_marginTop="5dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:backgroundTint="#EEEEEE"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#EEEEEE"
+                android:inputType="text"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutnumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#EEEEEE"
+            android:textColorHint="#EEEEEE"
+            android:layout_marginTop="5dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextnumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:backgroundTint="#EEEEEE"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#EEEEEE"
+                android:inputType="number"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#EEEEEE"
+            android:textColorHint="#EEEEEE"
+            android:layout_marginTop="5dp"
+            app:passwordToggleContentDescription="View"
+            app:passwordToggleDrawable="@drawable/eye"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorAccent">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:backgroundTint="#EEEEEE"
+                android:textColor="#EEEEEE"
+                android:textColorHint="#EEEEEE"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout"
+        android:layout_below="@+id/linear_reg"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="10dp">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_register"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:background="@android:color/holo_red_light"
+            android:gravity="center"
+            android:text="Register"
+            android:textColor="@color/cardview_dark_background"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="OR"
+            android:textColor="#FFFFFF" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toLeftOf="@id/tvText"
+            android:background="#FF0000" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@id/tvText"
+            android:background="#FF0000" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_button"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            app:buttonSize="icon_only"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="67dp">
+
+        </com.google.android.gms.common.SignInButton>
+    </RelativeLayout>
+
+
+</RelativeLayout>

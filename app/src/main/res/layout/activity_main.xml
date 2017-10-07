@@ -14,26 +14,7 @@
             android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#292c2f">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="@drawable/applogo"
-                android:layout_marginTop="30dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Welcome"
-                android:textSize="33dp"
-                android:gravity="center"
-                android:textColor="#EEEEEE"
-                android:layout_marginTop="120dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="190dp"
-                android:text="1. Send your travel request using Edit Travel Request \n\n2. You can see request of other people in Show all\n\n3.Request sent to you can be seen in Request"
-                android:textColor="#EEEEEE"/>
+            android:background="#FBFBFB">
         </FrameLayout>
 
     </LinearLayout>

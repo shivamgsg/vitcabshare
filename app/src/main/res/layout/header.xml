@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_centerVertical="true"
-    android:background="#292c2f">
+    android:background="#153243">
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_marginTop="20dp"
         android:id="@+id/circleImageView4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-      android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/cool" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:textColorHint="#EEEEEE"
         android:gravity="center"
         android:textColor="#EEEEEE"
-      android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="true"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"

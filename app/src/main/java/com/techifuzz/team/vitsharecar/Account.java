@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,6 +32,8 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -62,7 +65,8 @@ public class Account extends Fragment {
     private static final int GALLERY_PICK = 1;
     private StorageReference storageReference;
     private ProgressDialog progressDialog;
-    private Button button;
+    private Button button,getButton;
+    private DatabaseReference reference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -117,6 +121,37 @@ public class Account extends Fragment {
                 startActivityForResult(intent, 2);
             }
         });
+        getButton=(Button) root.findViewById(R.id.button_remove);
+        FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
+        String uid=current_user.getUid();
+        reference=FirebaseDatabase.getInstance().getReference().child("user").child(uid);
+        getButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Map map=new HashMap<String,String>();
+                map.put("image","default");
+                reference.updateChildren(map).addOnSuccessListener(new OnSuccessListener() {
+                    @Override
+                    public void onSuccess(Object o) {
+                        Toast.makeText(getContext(),"Profile picture removed",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            databaseReference.updateChildren(map);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
         return root;
     }
 
@@ -163,7 +198,7 @@ public class Account extends Fragment {
 
                 filepath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    public void onComplete(@NonNull final Task<UploadTask.TaskSnapshot> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getContext(), "Almost Done", Toast.LENGTH_SHORT).show();
                             final String download_url = task.getResult().getDownloadUrl().toString();
@@ -176,10 +211,23 @@ public class Account extends Fragment {
 
                                     if (thumb_task.isSuccessful()) {
 
-                                        Map upadethashmap = new HashMap<String, String>();
+                                        final Map upadethashmap = new HashMap<String, String>();
                                         upadethashmap.put("image", download_url);
                                         upadethashmap.put("thumb_image", thumb_url);
-                                        databaseReference.updateChildren(upadethashmap);
+                                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                if (dataSnapshot.exists()) {
+                                                    databaseReference.updateChildren(upadethashmap);
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+
                                         mdatabase.updateChildren(upadethashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {

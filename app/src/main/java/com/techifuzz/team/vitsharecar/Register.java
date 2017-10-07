@@ -28,14 +28,18 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
@@ -107,15 +111,7 @@ public class Register extends AppCompatActivity {
         int width = display.getWidth();
         int height = display.getHeight();
         LinearLayoutCompat myl=(LinearLayoutCompat) findViewById(R.id.linear_reg);
-
-        myl.setPadding(width/6,height/12,width/6,height/10);
-//        RelativeLayout mylay=(RelativeLayout) findViewById(R.id.rel1_reg);
-//        mylay.setPadding(width/6,0,width/6,0);
-//        AppCompatTextView t=(AppCompatTextView) findViewById(R.id.button_sign_up) ;
-//        t.setPadding(width/50,height/40,width/50,0);
-
-
-//        appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.button_sign_up);
+        myl.setPadding(width/6,height/22,width/6,height/25);
         SignInButton ta=(SignInButton) findViewById(R.id.google_button);
         ta.setPadding(width/50,height/40,width/50,0);
         progressDialog=new ProgressDialog(this);
@@ -149,7 +145,7 @@ public class Register extends AppCompatActivity {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(textInputEditTextPassword.getWindowToken(), 0);
                     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Register.this);
-                    alertDialogBuilder.setMessage("Do you want to continue with this number"+""+number);
+                    alertDialogBuilder.setMessage("Do you want to continue with this number"+" "+number+" ?");
                             alertDialogBuilder.setPositiveButton("yes",
                                     new DialogInterface.OnClickListener() {
                                         @Override
@@ -196,9 +192,11 @@ public class Register extends AppCompatActivity {
                     }
                 }).addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
 
+
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mGoogleApiClient.clearDefaultAccountAndReconnect();
                 signIn();
             }
         });
@@ -224,23 +222,51 @@ public class Register extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            String name=account.getDisplayName();
-                            String email=account.getEmail();
-                            String image=account.getPhotoUrl().toString();
-                            String device_token= FirebaseInstanceId.getInstance().getToken();
+                            final String name=account.getDisplayName();
+                            final String email=account.getEmail();
+                            final String image=account.getPhotoUrl().toString();
+                            final String device_token= FirebaseInstanceId.getInstance().getToken();
                             FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
                             String uid=current_user.getUid();
                             getMdatabase=FirebaseDatabase.getInstance().getReference().child("user").child(uid);
-                            HashMap<String,String> hello=new HashMap<String, String>();
-                            hello.put("name",name);
-                            hello.put("email",email);
-                            hello.put("image",image);
-                            hello.put("thumb_image","default");
-                            hello.put("token",device_token);
-                            hello.put("number","default");
-                            getMdatabase.setValue(hello);
-                            progressDialog.dismiss();
-                            startActivity(new Intent(Register.this,Google_phonenumber.class));
+                            getMdatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if(dataSnapshot.exists()){
+                                        String numb=dataSnapshot.child("number").getValue().toString();
+                                        if(numb.equals("default")){
+                                            progressDialog.dismiss();
+                                            startActivity(new Intent(Register.this,Google_phonenumber.class));
+                                        }else
+                                        {
+                                            progressDialog.dismiss();
+                                            startActivity(new Intent(Register.this,MainActivity.class));
+
+                                        }
+
+                                    }
+                                    else{
+                                        HashMap<String,String> hello=new HashMap<String, String>();
+                                        hello.put("name",name);
+                                        hello.put("email",email);
+                                        hello.put("image",image);
+                                        hello.put("thumb_image","default");
+                                        hello.put("token",device_token);
+                                        hello.put("number","default");
+                                        getMdatabase.setValue(hello);
+                                        progressDialog.dismiss();
+
+                                        startActivity(new Intent(Register.this,Google_phonenumber.class));
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -264,6 +290,7 @@ public class Register extends AppCompatActivity {
                 progressDialog.setMessage("Please wait while we Create your account");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
+
                 firebaseAuthWithGoogle(account);
 
             } else {
@@ -284,8 +311,11 @@ public class Register extends AppCompatActivity {
 
                             FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
                             String uid=current_user.getUid();
+
                             mdatabase=FirebaseDatabase.getInstance().getReference().child("user").child(uid);
+
                             String device_token= FirebaseInstanceId.getInstance().getToken();
+
                             HashMap<String,String> datamap=new HashMap<String, String>();
                             datamap.put("name",name);
                             datamap.put("email",email);

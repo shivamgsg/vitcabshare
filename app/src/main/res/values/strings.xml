@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VITShareCar</string>
+    <string name="app_name">VIT ShareCar</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_message_email">Enter Valid Email</string>
 </resources>

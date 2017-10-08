@@ -13,14 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#444444"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:textColorHint="#444444"
         android:layout_centerVertical="true">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/textInputEditTextnumber12"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:hint="Phone Number"
+            android:textSize="14sp"
             android:backgroundTint="#444444"
             android:textColor="#444444"
             android:textColorHint="#444444"
@@ -28,13 +31,13 @@
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
     <Button
-        android:layout_width="130dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
         android:id="@+id/button_number"
         android:background="@android:color/holo_red_light"
         android:textColor="@color/cardview_dark_background"
         android:text="Next"
-        android:textSize="18sp"
+        android:textSize="12sp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/textInputLayoutnumber12"
         android:layout_marginTop="20dp"/>

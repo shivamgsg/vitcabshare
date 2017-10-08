@@ -7,13 +7,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200px">
+        android:layout_marginTop="100px">
 
 
         <TextView
             android:id="@+id/from"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -23,12 +23,12 @@
             android:gravity="center"
             android:text="From"
             android:textColor="#444"
-            android:textSize="20sp" />
+            android:textSize="13sp" />
 
 
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/spinner_2"
-            android:layout_width="300dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/from"
             android:layout_alignLeft="@+id/spinner_1"
@@ -36,14 +36,14 @@
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/spinner_1"
             android:layout_below="@+id/from"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
             android:background="@null"
             android:textColor="#444" />
 
         <TextView
             android:id="@+id/to"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="40dp"
@@ -51,87 +51,92 @@
             android:gravity="center"
             android:text="To"
             android:textColor="#444"
-            android:textSize="20sp" />
+            android:textSize="13sp" />
 
 
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/spinner_1"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
             android:layout_above="@+id/button"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/from"
-            android:layout_marginRight="20dp"
+            android:layout_alignTop="@+id/to"
+            android:layout_marginRight="10dp"
             android:background="@null"
             android:textColor="#fff" />
 
         <TextView
             android:id="@+id/edit_travel_time"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:maxWidth="200dp"
+            android:layout_marginLeft="30dp"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="43dp"
+            android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/edit_travel_date"
             android:layout_alignBottom="@+id/edit_travel_date"
             android:layout_toEndOf="@+id/edit_travel_date"
-            android:layout_toRightOf="@+id/edit_travel_date"
             android:gravity="center"
             android:hint="Time Of Travel"
             android:textColor="#444"
             android:textColorHint="#444"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/edit_travel_date"
-            android:layout_width="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/to"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="73dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="43dp"
             android:gravity="center"
             android:hint="Date of Travel"
             android:textColor="#444"
             android:textColorHint="#444"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@+id/to"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="134dp"
+            android:layout_marginTop="79dp"
             android:background="@android:color/holo_red_light"
             android:gravity="center"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
             android:text="SUBMIT"
-            android:textColor="#000000"
-            android:textSize="15sp" />
+            android:textColor="#222222"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/viewrequest"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="51dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="17dp"
             android:background="@android:color/holo_red_light"
             android:gravity="center"
             android:text="View your sent request"
-            android:textColor="#000000"
-            android:textSize="15sp"
+            android:textColor="#222222"
+            android:textSize="12sp"
             android:layout_below="@+id/button"
             android:layout_alignLeft="@+id/edit_travel_date" />
 
         <Button
             android:id="@+id/delereq"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:background="@android:color/holo_red_light"
             android:gravity="center"
             android:text="Delete REQUEST"
-            android:textColor="#000000"
-            android:textSize="15sp"
+            android:textColor="#222222"
+            android:textSize="12sp"
+            android:layout_marginRight="12dp"
             android:layout_alignTop="@+id/viewrequest"
-            android:layout_alignRight="@+id/spinner_1" />
+            android:layout_alignRight="@+id/edit_travel_time" />
     </RelativeLayout>
 </FrameLayout>

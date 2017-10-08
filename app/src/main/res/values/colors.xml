@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1e2126</color>
+    <color name="colorPrimary">#eeeeee</color>
     <color name="colorPrimaryDark">#222222</color>
     <color name="colorAccent">@android:color/holo_red_light</color>
     <color name="cardview_dark_background">#FF424242</color>

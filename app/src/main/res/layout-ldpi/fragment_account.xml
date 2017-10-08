@@ -1,0 +1,62 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frag">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="#EEEEEE">
+
+      <de.hdodenhof.circleimageview.CircleImageView
+          xmlns:app="http://schemas.android.com/apk/res-auto"
+          android:id="@+id/profile_image1"
+          android:layout_width="140dp"
+          android:layout_height="140dp"
+          android:src="@drawable/cool"
+          app:civ_border_width="1.5dp"
+          app:civ_border_color="#FF000000"
+          android:layout_marginTop="25dp"
+          android:layout_centerHorizontal="true"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Name"
+           android:id="@+id/name_display"
+           android:textSize="25dp"
+           android:textColor="#444444"
+           android:layout_centerHorizontal="true"
+           android:layout_below="@+id/profile_image1"
+           android:gravity="center"
+           android:layout_marginTop="20dp"/>
+       <Button
+           android:layout_width="130dp"
+           android:layout_height="30dp"
+           android:layout_below="@+id/name_display"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           android:layout_marginTop="20dp"
+           android:textSize="10sp"
+           android:text="Change Profile Image"
+           android:id="@+id/button"
+           android:background="@android:color/holo_red_light"
+           android:gravity="center"
+           android:textColor="#000000"
+           />
+       <Button
+           android:layout_width="130dp"
+           android:layout_height="30dp"
+           android:layout_below="@+id/name_display"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           android:layout_marginTop="70dp"
+           android:textSize="10sp"
+           android:text="Remove Profile Image"
+           android:id="@+id/button_remove"
+           android:background="@android:color/holo_red_light"
+           android:gravity="center"
+           android:textColor="#000000"
+           />
+   </RelativeLayout>
+</FrameLayout>

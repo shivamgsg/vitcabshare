@@ -20,14 +20,16 @@
         android:textColor="#333333"
         android:textColorHint="#333333"
         android:maxLines="10"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:backgroundTint="#333333"
         android:inputType="textMultiLine"
-        android:textSize="15sp" />
+        android:textSize="13sp" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
             android:id="@+id/button_send_email"
             android:layout_below="@+id/enter_message"
             android:layout_centerHorizontal="true"
@@ -35,8 +37,7 @@
             android:background="@android:color/holo_red_light"
             android:gravity="center"
             android:textColor="@color/cardview_dark_background"
-            android:layout_marginTop="150dp"
-            android:layout_marginLeft="150dp"
+            android:layout_marginTop="100dp"
             android:text="Submit"/>
     </RelativeLayout>
 

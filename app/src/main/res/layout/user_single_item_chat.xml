@@ -3,7 +3,8 @@
     android:layout_height="80dp"
     android:orientation="vertical"
     android:layout_marginTop="4dp"
-    android:background="@drawable/shape"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/row_focused"
     >
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView_chat"
@@ -20,6 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_marginLeft="18dp"
+        android:layout_marginTop="5dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:hint="Name"
         android:textColor="#444444"

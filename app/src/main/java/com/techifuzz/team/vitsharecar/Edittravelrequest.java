@@ -127,39 +127,81 @@ public class Edittravelrequest extends Fragment {
                 ndatabse.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        String name = dataSnapshot.child("name").getValue().toString();
-                        String image = dataSnapshot.child("image").getValue().toString();
-                        String email = dataSnapshot.child("email").getValue().toString();
-                        String thumb_image = dataSnapshot.child("thumb_image").getValue().toString();
-                        String token = dataSnapshot.child("token").getValue().toString();
-                        String number=dataSnapshot.child("number").getValue().toString();
+                        final String name = dataSnapshot.child("name").getValue().toString();
+                        final String image = dataSnapshot.child("image").getValue().toString();
+                        final String email = dataSnapshot.child("email").getValue().toString();
+                        final String thumb_image = dataSnapshot.child("thumb_image").getValue().toString();
+                        final String token = dataSnapshot.child("token").getValue().toString();
+                        final String number=dataSnapshot.child("number").getValue().toString();
 
                         databaseReference = FirebaseDatabase.getInstance().getReference().child("travel").child(uid);
-                        if (to.isEmpty()) {
-                            Toast.makeText(getContext(), "cannot be empty", Toast.LENGTH_LONG).show();
-                        } else if (from.isEmpty() || from.matches(to)) {
-                            Toast.makeText(getContext(), "cannot be same", Toast.LENGTH_LONG).show();
-                        } else if (date.isEmpty()) {
-                            Toast.makeText(getContext(), " date cannot be empty", Toast.LENGTH_LONG).show();
-                        } else if (time.isEmpty()) {
-                            Toast.makeText(getContext(), "time cannot be empty", Toast.LENGTH_LONG).show();
-                        } else {
+                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    if (to.isEmpty()) {
+                                        Toast.makeText(getContext(), "Cannot be empty", Toast.LENGTH_LONG).show();
+                                    } else if (from.isEmpty() || from.matches(to)) {
+                                        Toast.makeText(getContext(), "Cannot be same", Toast.LENGTH_LONG).show();
+                                    } else if (date.isEmpty()) {
+                                        Toast.makeText(getContext(), "Date cannot be empty", Toast.LENGTH_LONG).show();
+                                    } else if (time.isEmpty()) {
+                                        Toast.makeText(getContext(), "Time cannot be empty", Toast.LENGTH_LONG).show();
+                                    } else {
 
-                            Map datamap = new HashMap<String, String>();
-                            datamap.put("to", to);
-                            datamap.put("from", from);
-                            datamap.put("date", date);
-                            datamap.put("time", time);
-                            datamap.put("image", image);
-                            datamap.put("name",name);
-                            datamap.put("email",email);
-                            datamap.put("token",token);
-                            datamap.put("thumb_image", thumb_image);
-                            datamap.put("number",number);
-                            databaseReference.setValue(datamap);
-                            Toast.makeText(getContext(), "Your Request have been sent", Toast.LENGTH_LONG).show();
-                        }
+                                        Map datamap = new HashMap();
+                                        datamap.put("to", to);
+                                        datamap.put("from", from);
+                                        datamap.put("date", date);
+                                        datamap.put("time", time);
+                                        datamap.put("image", image);
+                                        datamap.put("name", name);
+                                        datamap.put("email", email);
+                                        datamap.put("token", token);
+                                        datamap.put("thumb_image", thumb_image);
+                                        datamap.put("number", number);
+                                        databaseReference.updateChildren(datamap);
+                                    }
+                                } else {
+                                    if (to.isEmpty()) {
+                                        Toast.makeText(getContext(), "Cannot be empty", Toast.LENGTH_LONG).show();
+                                    } else if (from.isEmpty() || from.matches(to)) {
+                                        Toast.makeText(getContext(), "Cannot be same", Toast.LENGTH_LONG).show();
+                                    } else if (date.isEmpty()) {
+                                        Toast.makeText(getContext(), "Date cannot be empty", Toast.LENGTH_LONG).show();
+                                    } else if (time.isEmpty()) {
+                                        Toast.makeText(getContext(), "Time cannot be empty", Toast.LENGTH_LONG).show();
+                                    } else {
 
+                                        HashMap<String,String> datamap = new HashMap<String, String>();
+                                        datamap.put("to", to);
+                                        datamap.put("from", from);
+                                        datamap.put("date", date);
+                                        datamap.put("time", time);
+                                        datamap.put("image", image);
+                                        datamap.put("name", name);
+                                        datamap.put("email", email);
+                                        datamap.put("token", token);
+                                        datamap.put("thumb_image", thumb_image);
+                                        datamap.put("number", number);
+                                        databaseReference.setValue(datamap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(getContext(), "Your Request has been sent", Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        });
+
+
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
                     }
 
                     @Override

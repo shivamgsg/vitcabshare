@@ -1,6 +1,7 @@
 package com.techifuzz.team.vitsharecar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -80,7 +81,8 @@ public class ChatActivity extends AppCompatActivity {
         mCurrentUserId = mAuth.getCurrentUser().getUid();
 
         mChatUser = getIntent().getStringExtra("user_id");
-        String userName = getIntent().getStringExtra("user_name");
+        final String userName = getIntent().getStringExtra("user_name");
+        final String userimage=getIntent().getStringExtra("user_image");
 
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View action_bar_view = inflater.inflate(R.layout.chat_custom_bar, null);
@@ -88,6 +90,15 @@ public class ChatActivity extends AppCompatActivity {
         mTitleView = (TextView) findViewById(R.id.custom_bar_title);
         mLastSeenView = (TextView) findViewById(R.id.custom_bar_seen);
         mProfileImage = (CircleImageView) findViewById(R.id.custom_bar_image);
+        Picasso.with(getApplicationContext()).load(userimage).into(mProfileImage);
+        mProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),Profile.class);
+                intent.putExtra("user_id",mChatUser);
+                startActivity(intent);
+            }
+        });
 
         mChatAddBtn = (ImageButton) findViewById(R.id.chat_add_btn);
         mChatSendBtn = (ImageButton) findViewById(R.id.chat_send_btn);
@@ -148,10 +159,12 @@ public class ChatActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                              String name=dataSnapshot.child("name").getValue().toString();
+                            String image=dataSnapshot.child("image").getValue().toString();
                             Map chatAddMap = new HashMap();
                             chatAddMap.put("seen", false);
                             chatAddMap.put("timestamp", ServerValue.TIMESTAMP);
                             chatAddMap.put("name",name);
+                            chatAddMap.put("image",image);
 
                             Map chatUserMap = new HashMap();
 //                            chatUserMap.put("Chat/" + mCurrentUserId + "/" + mChatUser, chatAddMap);
@@ -181,10 +194,12 @@ public class ChatActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             String name=dataSnapshot.child("name").getValue().toString();
+                            String image=dataSnapshot.child("image").getValue().toString();
                             Map chatAddMap1 = new HashMap();
                             chatAddMap1.put("seen", false);
                             chatAddMap1.put("timestamp", ServerValue.TIMESTAMP);
                             chatAddMap1.put("name",name);
+                            chatAddMap1.put("image",image);
 
                             Map chatUserMap1 = new HashMap();
                            chatUserMap1.put("Chat/" + mCurrentUserId + "/" + mChatUser, chatAddMap1);

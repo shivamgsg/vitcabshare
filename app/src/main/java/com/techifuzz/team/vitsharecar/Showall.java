@@ -87,7 +87,7 @@ private RecyclerView recyclerView;
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
 
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -95,18 +95,75 @@ private RecyclerView recyclerView;
                         String date = String.valueOf(dayOfMonth) + "-" + String.valueOf(MONTHS[monthOfYear])
                                 + "-" + String.valueOf(year);
                         editText.setText(date);
+                        String n=editText.getText().toString();
+                        final Query query1=databaseReference.orderByChild("date").startAt(n).endAt(n);
+                        query1.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if (!dataSnapshot.exists()) {
+
+                                    Toast.makeText(getContext(),"No request",Toast.LENGTH_LONG).show();
+                                }
+
+                                else {
+                                    Query query=databaseReference.orderByChild("date");
+                                    FirebaseRecyclerAdapter<User, UserViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<User, UserViewHolder>(
+                                            User.class,
+                                            R.layout.users_single_item,
+                                            UserViewHolder.class,
+                                            query1
+
+                                    ) {
+                                        @Override
+                                        protected void populateViewHolder(UserViewHolder viewHolder, User user, int position) {
+
+                                            viewHolder.setName(user.getName());
+                                            viewHolder.setTo(user.getTo());
+                                            viewHolder.setFrom(user.getFrom());
+                                            viewHolder.setDate(user.getDate());
+                                            viewHolder.setTime(user.getTime());
+                                            viewHolder.setImage(user.getImage(), getContext());
+                                            final String user_id = getRef(position).getKey();
+                                            viewHolder.mview.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                                    if(uid.equals(user_id)){
+                                                        Toast.makeText(getContext(),"You cannot send request to yourself",Toast.LENGTH_SHORT).show();
+                                                    }
+                                                    else {
+                                                        Intent profile = new Intent(getContext(), Profile.class);
+                                                        profile.putExtra("user_id", user_id);
+                                                        startActivity(profile);
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    };
+                                    recyclerView.setAdapter(firebaseRecyclerAdapter);
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
                     }
 
                 }, yy, mm, dd);
                 datePicker.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
                 datePicker.show();
+
+
             }
         });
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               String n=editText.getText().toString();
-                final Query query1=databaseReference.orderByChild("date").startAt(n).endAt(n);
+                editText.setText("Choose Date Required");
+                final Query query1=databaseReference.orderByChild("date");
                 query1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

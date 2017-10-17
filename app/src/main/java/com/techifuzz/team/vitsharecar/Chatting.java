@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StreamDownloadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -38,7 +39,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class Chatting extends Fragment {
     private TextView textView;
-    private DatabaseReference databaseReference,getDatabaseReference;
+    private DatabaseReference databaseReference,getDatabaseReference,reference;
     private RecyclerView recyclerView;
 
 
@@ -116,10 +117,11 @@ public class Chatting extends Fragment {
 
                     ) {
                         @Override
-                        protected void populateViewHolder(UserViewHolder viewHolder, final User user, int position) {
+                        protected void populateViewHolder(final UserViewHolder viewHolder, final User user, final int position) {
 
                             final String list_user_id = getRef(position).getKey();
                             final String name = user.getName();
+                            final String image=user.getImage();
 
 
                             viewHolder.setName(user.getName());
@@ -151,7 +153,43 @@ public class Chatting extends Fragment {
                                     Intent chatIntent = new Intent(getContext(), ChatActivity.class);
                                                 chatIntent.putExtra("user_id", list_user_id);
                                                 chatIntent.putExtra("user_name", name);
+                                                chatIntent.putExtra("user_image",image);
                                                 startActivity(chatIntent);
+                                }
+                            });
+                            viewHolder.mview.setOnLongClickListener(new View.OnLongClickListener() {
+                                @Override
+                                public boolean onLongClick(View view) {
+                                    viewHolder.mview.setSelected(true);
+                                    CharSequence options[] = new CharSequence[]{"Delete"};
+//
+                                    final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+                                    builder.setTitle("Select Options");
+                                    builder.setItems(options, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                                            if (i == 0) {
+                                                getDatabaseReference.child(list_user_id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    });
+                                    builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                        @Override
+                                        public void onCancel(DialogInterface dialogInterface) {
+                                            viewHolder.mview.setSelected(false);
+                                        }
+                                    });
+
+                                    builder.show();
+                                    return false;
                                 }
                             });
 
@@ -182,6 +220,7 @@ public class Chatting extends Fragment {
         }
         public void setImage(String image, Context context)
         {
+
             CircleImageView userimage=(CircleImageView) mview.findViewById(R.id.circleImageView_chat);
             Picasso.with(context).load(image).placeholder(R.drawable.cool).into(userimage);
         }

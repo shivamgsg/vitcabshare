@@ -17,11 +17,11 @@
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
                 android:background="@android:color/white"
-                app:srcCompat="@drawable/clearsearch"
-                android:layout_toRightOf="@+id/textview_date" />
+                app:srcCompat="@drawable/clearsearch"/>
 
         <TextView
-            android:layout_width="350dp"
+            android:layout_width="340dp"
+            android:layout_centerHorizontal="true"
             android:layout_height="40dp"
             android:id="@+id/textview_date"
             android:hint="Choose Date required"

@@ -11,6 +11,7 @@
         android:layout_height="150dp"
         android:src="@drawable/applogo"
         android:layout_centerHorizontal="true"
+        android:id="@+id/start_splah_image"
         android:layout_centerVertical="true"/>
 
 </RelativeLayout>

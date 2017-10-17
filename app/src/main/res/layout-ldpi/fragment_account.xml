@@ -40,9 +40,9 @@
            android:textSize="10sp"
            android:text="Change Profile Image"
            android:id="@+id/button"
-           android:background="@android:color/holo_red_light"
+           android:background="@color/button"
            android:gravity="center"
-           android:textColor="#000000"
+           android:textColor="@color/colorPrimary"
            />
        <Button
            android:layout_width="130dp"
@@ -54,9 +54,9 @@
            android:textSize="10sp"
            android:text="Remove Profile Image"
            android:id="@+id/button_remove"
-           android:background="@android:color/holo_red_light"
+           android:background="@color/button"
            android:gravity="center"
-           android:textColor="#000000"
+           android:textColor="@color/colorPrimary"
            />
    </RelativeLayout>
 </FrameLayout>

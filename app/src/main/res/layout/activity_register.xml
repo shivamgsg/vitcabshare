@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="20dp"
         android:id="@+id/linear_reg">
         <ImageView
             android:layout_width="wrap_content"
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:textColor="#EEEEEE"
             android:textColorHint="#EEEEEE"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/textInputEditTextName"
@@ -124,47 +125,13 @@
             android:id="@+id/button_register"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:background="@android:color/holo_red_light"
+            android:background="@color/button"
             android:gravity="center"
+            android:layout_marginTop="20dp"
             android:text="Register"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/colorPrimary"
             android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:id="@+id/tvText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="OR"
-            android:textColor="#FFFFFF" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:layout_toLeftOf="@id/tvText"
-            android:background="#FF0000" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
-            android:layout_toRightOf="@id/tvText"
-            android:background="#FF0000" />
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/google_button"
-            android:layout_width="130dp"
-            android:layout_height="70dp"
-            app:buttonSize="icon_only"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="67dp">
-
-        </com.google.android.gms.common.SignInButton>
     </RelativeLayout>
 
 

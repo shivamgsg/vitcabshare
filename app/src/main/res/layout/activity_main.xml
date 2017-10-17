@@ -20,6 +20,7 @@
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
+        app:itemTextColor="@drawable/nav_text"
         android:id="@+id/navigation_view"
         android:layout_width="250dp"
         android:layout_height="match_parent"

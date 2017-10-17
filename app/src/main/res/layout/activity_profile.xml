@@ -36,11 +36,11 @@
             android:id="@+id/button_send_req"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:background="@android:color/holo_red_light"
+            android:background="@color/button"
             android:gravity="center"
             android:textSize="15sp"
             android:text="Send Request"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/colorPrimary"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="117dp" />

@@ -35,7 +35,6 @@
 
     <TextView
         android:id="@+id/to_display"
-        android:layout_marginTop="-25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/naame"
@@ -44,28 +43,25 @@
         android:layout_alignStart="@+id/naame"
         android:textColor="#444444"
         android:textColorHint="#444444"
-        android:layout_centerVertical="true"
-    android:textSize="13sp"
-        android:hint="To" />
+        android:textSize="13sp"
+        android:hint="To"
+        android:layout_below="@+id/naame" />
 
     <TextView
         android:id="@+id/to_word"
-        android:layout_marginTop="-10sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/to_display"
-        android:layout_alignStart="@+id/to_display"
         android:textColor="#444444"
         android:textColorHint="#444444"
         android:textSize="13sp"
+        android:text="To"
         android:layout_below="@+id/to_display"
-        android:text="To" />
+        android:layout_alignLeft="@+id/to_display" />
 
     <TextView
         android:id="@+id/from_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/circleImageView"
         android:layout_alignLeft="@+id/to_word"
         android:textColor="#444444"
         android:textColorHint="#444444"
@@ -73,20 +69,19 @@
         android:layout_alignParentRight="true"
         android:layout_alignStart="@+id/to_word"
         android:hint="From"
-        android:textSize="13sp"/>
+        android:textSize="13sp"
+        android:layout_above="@+id/time_display" />
 
     <TextView
         android:id="@+id/date_display"
         android:layout_width="112dp"
-        android:layout_marginTop="5dp"
         android:layout_height="wrap_content"
         android:textColor="#444444"
         android:textColorHint="#444444"
-        android:layout_alignLeft="@+id/from_display"
-        android:layout_alignStart="@+id/from_display"
-        android:layout_below="@+id/from_display"
         android:hint="Date"
-        android:textSize="13sp"/>
+        android:textSize="13sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/from_display" />
 
     <TextView
         android:id="@+id/time_display"
@@ -94,11 +89,10 @@
         android:layout_height="wrap_content"
         android:textColor="#444444"
         android:textColorHint="#444444"
-        android:layout_alignBottom="@+id/date_display"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="34dp"
         android:layout_marginStart="51dp"
-        android:layout_toEndOf="@+id/date_display"
-        android:layout_toRightOf="@+id/date_display"
-        android:hint="Time"/>
+        android:hint="Time"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/date_display" />
 
 </RelativeLayout>

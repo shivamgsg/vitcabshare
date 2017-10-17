@@ -40,7 +40,7 @@ public class StartActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent reg_intent=new Intent(StartActivity.this,Login.class);
+                Intent reg_intent=new Intent(StartActivity.this,Main3Activity.class);
                startActivity(reg_intent);
             }
         });

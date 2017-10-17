@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.techifuzz.team.vitsharecar.Main3Activity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/if_mail_1296373"
+        android:id="@+id/image"
+        android:layout_marginTop="35dp"/>
+    <Button
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:background="@color/button"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_marginTop="30dp"
+        android:id="@+id/signup_byn"
+        android:text="Sign up using email"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:background="@color/button"
+        android:textColor="@color/colorPrimary"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signup_byn"
+        android:layout_marginTop="12dp"
+        android:id="@+id/signin_byn"
+        android:text="Sign IN using email"
+        android:layout_centerHorizontal="true"/>
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googlebutton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:buttonSize="icon_only"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/signin_byn">
+
+    </com.google.android.gms.common.SignInButton>
+
+
+</RelativeLayout>

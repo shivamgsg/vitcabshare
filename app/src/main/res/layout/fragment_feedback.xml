@@ -32,9 +32,9 @@
             android:layout_below="@+id/enter_message"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="@android:color/holo_red_light"
+            android:background="@color/button"
             android:gravity="center"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/colorPrimary"
             android:layout_marginTop="150dp"
             android:layout_marginLeft="150dp"
             android:text="Submit"/>

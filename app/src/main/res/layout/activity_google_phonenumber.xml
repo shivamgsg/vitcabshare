@@ -27,17 +27,18 @@
             android:inputType="number"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
+
     <Button
+        android:id="@+id/button_number"
         android:layout_width="130dp"
         android:layout_height="50dp"
-        android:id="@+id/button_number"
-        android:background="@android:color/holo_red_light"
-        android:textColor="@color/cardview_dark_background"
-        android:text="Next"
-        android:textSize="18sp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/textInputLayoutnumber12"
-        android:layout_marginTop="20dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/button"
+        android:text="Next"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
 
 
 </RelativeLayout>

@@ -66,11 +66,11 @@ public class Register extends AppCompatActivity {
     private DatabaseReference mDatebase;
     private DatabaseReference getMdatabase;
 
-    private SignInButton signInButton;
-    private GoogleApiClient mGoogleApiClient;
-    private FirebaseAuth.AuthStateListener authStateListener;
-    private static final int RC_SIGN_IN = 1;
-    private static final String TAG = "LOGIN_ACTIVITY";
+//    private SignInButton signInButton;
+//    private GoogleApiClient mGoogleApiClient;
+//    private FirebaseAuth.AuthStateListener authStateListener;
+//    private static final int RC_SIGN_IN = 1;
+//    private static final String TAG = "LOGIN_ACTIVITY";
 
 
 
@@ -79,21 +79,21 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         nestedScrollView = (RelativeLayout) findViewById(R.id.nestedScrollView);
-        mAuth=FirebaseAuth.getInstance();
-        authStateListener= new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user=firebaseAuth.getCurrentUser();
-                if(user!=null){
-                    Intent intent=new Intent(Register.this,MainActivity.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(Register.this,"Hello",Toast.LENGTH_SHORT).show();
-                }
-            }
-
-        };
+//        mAuth=FirebaseAuth.getInstance();
+//        authStateListener= new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser user=firebaseAuth.getCurrentUser();
+//                if(user!=null){
+//                    Intent intent=new Intent(Register.this,MainActivity.class);
+//                    startActivity(intent);
+//                }
+//                else {
+//                    Toast.makeText(Register.this,"Hello",Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//        };
         textInputLayoutName = (TextInputLayout) findViewById(R.id.textInputLayoutName);
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
@@ -112,8 +112,8 @@ public class Register extends AppCompatActivity {
         int height = display.getHeight();
         LinearLayoutCompat myl=(LinearLayoutCompat) findViewById(R.id.linear_reg);
         myl.setPadding(width/6,height/22,width/6,height/25);
-        SignInButton ta=(SignInButton) findViewById(R.id.google_button);
-        ta.setPadding(width/50,height/40,width/50,0);
+//        SignInButton ta=(SignInButton) findViewById(R.id.google_button);
+//        ta.setPadding(width/50,height/40,width/50,0);
         progressDialog=new ProgressDialog(this);
 
 
@@ -178,128 +178,128 @@ public class Register extends AppCompatActivity {
 //        });
         //-----google sign in
 
-        signInButton=(SignInButton) findViewById(R.id.google_button);
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        mGoogleApiClient=new GoogleApiClient.Builder(Register.this)
-                .enableAutoManage(Register.this,new  GoogleApiClient.OnConnectionFailedListener(){
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        Toast.makeText(Register.this,"Error",Toast.LENGTH_SHORT).show();
-
-                    }
-                }).addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
-
-
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mGoogleApiClient.clearDefaultAccountAndReconnect();
-                signIn();
-            }
-        });
+//        signInButton=(SignInButton) findViewById(R.id.google_button);
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestIdToken(getString(R.string.default_web_client_id))
+//                .requestEmail()
+//                .build();
+//        mGoogleApiClient=new GoogleApiClient.Builder(Register.this)
+//                .enableAutoManage(Register.this,new  GoogleApiClient.OnConnectionFailedListener(){
+//                    @Override
+//                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+//                        Toast.makeText(Register.this,"Error",Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                }).addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
+//
+//
+//        signInButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mGoogleApiClient.clearDefaultAccountAndReconnect();
+//                signIn();
+//            }
+//        });
     }
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (authStateListener != null) {
-            mAuth.removeAuthStateListener(authStateListener);
-        }
-    }
-    private void signIn() {
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-    private void firebaseAuthWithGoogle(final GoogleSignInAccount account) {
-
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            final String name=account.getDisplayName();
-                            final String email=account.getEmail();
-                            final String image=account.getPhotoUrl().toString();
-                            final String device_token= FirebaseInstanceId.getInstance().getToken();
-                            FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
-                            String uid=current_user.getUid();
-                            getMdatabase=FirebaseDatabase.getInstance().getReference().child("user").child(uid);
-                            getMdatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    if(dataSnapshot.exists()){
-                                        String numb=dataSnapshot.child("number").getValue().toString();
-                                        if(numb.equals("default")){
-                                            progressDialog.dismiss();
-                                            startActivity(new Intent(Register.this,Google_phonenumber.class));
-                                        }else
-                                        {
-                                            progressDialog.dismiss();
-                                            startActivity(new Intent(Register.this,MainActivity.class));
-
-                                        }
-
-                                    }
-                                    else{
-                                        HashMap<String,String> hello=new HashMap<String, String>();
-                                        hello.put("name",name);
-                                        hello.put("email",email);
-                                        hello.put("image",image);
-                                        hello.put("thumb_image","default");
-                                        hello.put("token",device_token);
-                                        hello.put("number","default");
-                                        getMdatabase.setValue(hello);
-                                        progressDialog.dismiss();
-
-                                        startActivity(new Intent(Register.this,Google_phonenumber.class));
-
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
-
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(Register.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if (result.isSuccess()) {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = result.getSignInAccount();
-                progressDialog.setTitle("Registering User......");
-                progressDialog.setMessage("Please wait while we Create your account");
-                progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.show();
-
-                firebaseAuthWithGoogle(account);
-
-            } else {
-                // Google Sign In failed, update UI appropriately
-                // ...
-                Toast.makeText(Register.this,"There was a trouble signing in-Please try again",Toast.LENGTH_SHORT).show();;
-            }
-        }
-    }
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        if (authStateListener != null) {
+//            mAuth.removeAuthStateListener(authStateListener);
+//        }
+//    }
+//    private void signIn() {
+//        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+//        startActivityForResult(signInIntent, RC_SIGN_IN);
+//    }
+//    private void firebaseAuthWithGoogle(final GoogleSignInAccount account) {
+//
+//        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+//        mAuth.signInWithCredential(credential)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            Log.d(TAG, "signInWithCredential:success");
+//                            final String name=account.getDisplayName();
+//                            final String email=account.getEmail();
+//                            final String image=account.getPhotoUrl().toString();
+//                            final String device_token= FirebaseInstanceId.getInstance().getToken();
+//                            FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
+//                            String uid=current_user.getUid();
+//                            getMdatabase=FirebaseDatabase.getInstance().getReference().child("user").child(uid);
+//                            getMdatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//                                @Override
+//                                public void onDataChange(DataSnapshot dataSnapshot) {
+//                                    if(dataSnapshot.exists()){
+//                                        String numb=dataSnapshot.child("number").getValue().toString();
+//                                        if(numb.equals("default")){
+//                                            progressDialog.dismiss();
+//                                            startActivity(new Intent(Register.this,Google_phonenumber.class));
+//                                        }else
+//                                        {
+//                                            progressDialog.dismiss();
+//                                            startActivity(new Intent(Register.this,MainActivity.class));
+//
+//                                        }
+//
+//                                    }
+//                                    else{
+//                                        HashMap<String,String> hello=new HashMap<String, String>();
+//                                        hello.put("name",name);
+//                                        hello.put("email",email);
+//                                        hello.put("image",image);
+//                                        hello.put("thumb_image","default");
+//                                        hello.put("token",device_token);
+//                                        hello.put("number","default");
+//                                        getMdatabase.setValue(hello);
+//                                        progressDialog.dismiss();
+//
+//                                        startActivity(new Intent(Register.this,Google_phonenumber.class));
+//
+//                                    }
+//                                }
+//
+//                                @Override
+//                                public void onCancelled(DatabaseError databaseError) {
+//
+//                                }
+//                            });
+//
+//                        } else {
+//                            // If sign in fails, display a message to the user.
+//                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+//                            Toast.makeText(Register.this, "Authentication failed.",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+//        if (requestCode == RC_SIGN_IN) {
+//            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+//            if (result.isSuccess()) {
+//                // Google Sign In was successful, authenticate with Firebase
+//                GoogleSignInAccount account = result.getSignInAccount();
+//                progressDialog.setTitle("Registering User......");
+//                progressDialog.setMessage("Please wait while we Create your account");
+//                progressDialog.setCanceledOnTouchOutside(false);
+//                progressDialog.show();
+//
+//                firebaseAuthWithGoogle(account);
+//
+//            } else {
+//                // Google Sign In failed, update UI appropriately
+//                // ...
+//                Toast.makeText(Register.this,"There was a trouble signing in-Please try again",Toast.LENGTH_SHORT).show();;
+//            }
+//        }
+//    }
 
 
     private void register_user(final String name, final String email, String password, final String number) {

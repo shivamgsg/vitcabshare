@@ -6,4 +6,5 @@
     <color name="cardview_dark_background">#FF424242</color>
     <color name="cardview_light_background">#FFFFFFFF</color>
     <color name="cardview_shadow_end_color">#03000000</color>
+    <color name="button">#173749</color>
 </resources>

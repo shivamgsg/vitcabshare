@@ -40,7 +40,7 @@
            android:textSize="10sp"
            android:text="Change Profile Image"
            android:id="@+id/button"
-           android:background="@color/button"
+           android:background="@drawable/but_shadow"
            android:gravity="center"
            android:textColor="@color/colorPrimary"
            />
@@ -54,7 +54,7 @@
            android:textSize="10sp"
            android:text="Remove Profile Image"
            android:id="@+id/button_remove"
-           android:background="@color/button"
+           android:background="@drawable/but_shadow"
            android:gravity="center"
            android:textColor="@color/colorPrimary"
            />

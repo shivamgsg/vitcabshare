@@ -39,7 +39,7 @@
            android:layout_marginTop="30dp"
            android:text="Change Profile Image"
            android:id="@+id/button"
-           android:background="@color/button"
+           android:background="@drawable/but_shadow"
            android:gravity="center"
            android:textColor="@color/colorPrimary"
            />
@@ -52,7 +52,7 @@
            android:layout_marginTop="110dp"
            android:text="Remove Profile Image"
            android:id="@+id/button_remove"
-           android:background="@color/button"
+           android:background="@drawable/but_shadow"
            android:gravity="center"
            android:textColor="@color/colorPrimary"
            />

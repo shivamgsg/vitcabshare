@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     android:background="#EEEEEE"
     tools:context="com.techifuzz.team.vitsharecar.Google_phonenumber">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/text_view_d"
+        android:background="#173749"
+        android:text="Phone Authentication"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:textSize="20dp"/>
 
 
     <android.support.design.widget.TextInputLayout
@@ -13,34 +22,86 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#444444"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:textColorHint="#444444"
-        android:layout_centerVertical="true">
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/text_view_d">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/textInputEditTextnumber12"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
             android:hint="Phone Number"
-            android:textSize="14sp"
             android:backgroundTint="#444444"
             android:textColor="#444444"
             android:textColorHint="#444444"
             android:inputType="number"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
-    <Button
-        android:layout_width="70dp"
+    <ImageView
+        android:layout_width="35dp"
         android:layout_height="30dp"
-        android:id="@+id/button_number"
-        android:background="@color/button"
-        android:textColor="@color/colorPrimary"
-        android:text="Next"
-        android:textSize="12sp"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/lock"
+        android:background="@drawable/lock"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/textInputLayoutnumber12"
-        android:layout_marginTop="20dp"/>
+        android:visibility="invisible"/>
+    <EditText
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:hint="Enter the OTP here"
+        android:backgroundTint="#444444"
+        android:textColor="#444444"
+        android:inputType="number"
+        android:id="@+id/otp"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/lock"
+        android:layout_toRightOf="@+id/lock" />
+    <ProgressBar
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/otp"
+        android:layout_below="@+id/textInputLayoutnumber12"
+        android:layout_marginTop="15dp"
+        android:id="@+id/progress_bar_otp"
+        android:visibility="invisible"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/button_number"
+        android:text="A verification Code will be sent to your Phone Number"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+    <Button
+        android:layout_width="220dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:background="@drawable/but_shadow"
+        android:text="Send Verification "
+        android:gravity="center"
+        android:textSize="12sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/button_number_otp"/>
+
+    <Button
+        android:id="@+id/button_number"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/but_shadow"
+        android:text="Verify OTP"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:visibility="invisible"/>
 
 
 </RelativeLayout>

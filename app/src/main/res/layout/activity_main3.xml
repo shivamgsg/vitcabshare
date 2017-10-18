@@ -5,28 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.techifuzz.team.vitsharecar.Main3Activity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/head"
+        android:text="Welcome"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:background="@color/button"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/if_mail_1296373"
         android:id="@+id/image"
+        android:layout_below="@+id/head"
         android:layout_marginTop="50dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/image"
         android:layout_marginTop="60dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:background="@color/button"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18sp"
+        android:background="@drawable/but_shadow"
         android:textColor="@color/colorPrimary"
         android:id="@+id/signup_byn"
         android:text="Sign up using email"
         android:layout_centerHorizontal="true"/>
     <Button
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:background="@color/button"
+        android:textSize="18sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/but_shadow"
         android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,9 +54,9 @@
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         app:buttonSize="icon_only"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/signin_byn">
+        android:layout_below="@+id/signin_byn"
+        android:layout_centerHorizontal="true">
 
     </com.google.android.gms.common.SignInButton>
 

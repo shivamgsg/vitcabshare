@@ -14,7 +14,7 @@
     <Button
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:background="@color/button"
+        android:background="@drawable/but_shadow"
         android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:text="Sign up using email"
         android:layout_centerHorizontal="true"/>
     <Button
-        android:background="@color/button"
+        android:background="@drawable/but_shadow"
         android:textColor="@color/colorPrimary"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"

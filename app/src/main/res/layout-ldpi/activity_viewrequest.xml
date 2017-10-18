@@ -4,7 +4,7 @@
         android:background="#FFFFFF">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
@@ -13,22 +13,23 @@
         android:id="@+id/hello">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageViewreq"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/cool" />
 
         <TextView
             android:id="@+id/naamereq"
-            android:layout_width="150dp"
-            android:layout_height="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
             android:textColor="#444444"
             android:textColorHint="#444444"
-            android:layout_marginLeft="23dp"
-            android:layout_marginStart="23dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:hint="Name"
-            android:textSize="23sp"
+            android:textSize="18sp"
             android:layout_alignTop="@+id/circleImageViewreq"
             android:layout_toRightOf="@+id/circleImageViewreq"
             android:layout_alignParentRight="true"
@@ -40,12 +41,12 @@
             android:textColorHint="#444444"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/naamereq"
-            android:layout_alignStart="@+id/naamereq"
-            android:layout_centerVertical="true"
+            android:textSize="13sp"
             android:hint="To"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/naamereq"
+            android:layout_below="@+id/naamereq" />
 
         <TextView
             android:id="@+id/to_word_req"
@@ -54,10 +55,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="To"
+            android:textSize="13sp"
             android:layout_below="@+id/to_display_req"
-            android:layout_alignLeft="@+id/to_display_req"
-            android:layout_alignStart="@+id/to_display_req"
-            android:layout_above="@+id/from_display_req" />
+            android:layout_above="@+id/from_display_req"
+            android:layout_alignLeft="@+id/to_display_req" />
 
         <TextView
             android:id="@+id/from_display_req"
@@ -65,16 +66,18 @@
             android:textColorHint="#444444"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/circleImageViewreq"
             android:layout_alignLeft="@+id/to_word_req"
             android:layout_alignStart="@+id/to_word_req"
             android:hint="From"
+            android:textSize="13sp"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/circleImageViewreq" />
 
         <TextView
             android:id="@+id/date_display_req"
             android:textColor="#444444"
+            android:textSize="13sp"
             android:textColorHint="#444444"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
@@ -87,11 +90,12 @@
             android:id="@+id/time_display_req"
             android:textColor="#444444"
             android:textColorHint="#444444"
+            android:textSize="13sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/date_display_req"
-            android:layout_marginLeft="71dp"
-            android:layout_marginStart="71dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="51dp"
             android:layout_toEndOf="@+id/date_display_req"
             android:layout_toRightOf="@+id/date_display_req"
             android:hint="Time" />
@@ -100,7 +104,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:background="@drawable/shape"
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="1dp"
@@ -112,9 +116,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:text="No request was found"
-        android:textSize="30sp"
+        android:textSize="22sp"
         android:textColor="#444444"
         android:gravity="center"
         android:id="@+id/norequestwwasfound"

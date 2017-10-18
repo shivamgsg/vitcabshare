@@ -32,7 +32,7 @@
             android:layout_below="@+id/enter_message"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="@color/button"
+            android:background="@drawable/but_shadow"
             android:gravity="center"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="150dp"

@@ -125,7 +125,7 @@
             android:id="@+id/button_register"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:background="@color/button"
+            android:background="@drawable/but_shadow"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Register"

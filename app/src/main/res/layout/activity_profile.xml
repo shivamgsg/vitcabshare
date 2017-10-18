@@ -36,7 +36,7 @@
             android:id="@+id/button_send_req"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:background="@color/button"
+            android:background="@drawable/but_shadow"
             android:gravity="center"
             android:textSize="15sp"
             android:text="Send Request"

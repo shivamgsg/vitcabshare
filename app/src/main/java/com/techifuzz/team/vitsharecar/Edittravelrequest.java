@@ -240,7 +240,7 @@ public class Edittravelrequest extends Fragment {
                         }
                         else
                         {
-                            Toast.makeText(getContext(),"You have no request",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(),"No request to delete",Toast.LENGTH_SHORT).show();
                         }
                     }
 

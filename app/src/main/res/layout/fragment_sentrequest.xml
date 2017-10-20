@@ -5,14 +5,16 @@
     tools:context="com.techifuzz.team.vitsharecar.Sentrequest">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/userlist2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/userlist2"/>
+        android:layout_height="match_parent" />
+
     <TextView
+        android:id="@+id/norequest1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="No Request Received"
-        android:textColor="#444444"
         android:gravity="center"
-        android:id="@+id/norequest1"/>
+        android:text="No Request Sent"
+        android:textColor="#444444"
+        android:textSize="25dp" />
 </FrameLayout>

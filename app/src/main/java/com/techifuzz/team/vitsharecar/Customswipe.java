@@ -6,14 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 /**
  * Created by Mridul on 03-10-2017.
  */
 
 public class Customswipe extends PagerAdapter {
-    private int [] image={R.drawable.mridul,R.drawable.shivam};
+    private int [] image={R.drawable.s1,R.drawable.s2,R.drawable.s3,R.drawable.s4,R.drawable.s5};
     private Context context;
     private LayoutInflater layoutInflater;
 
@@ -31,9 +30,9 @@ public class Customswipe extends PagerAdapter {
         layoutInflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemview=layoutInflater.inflate(R.layout.swipe_1,container,false);
         ImageView imageView=(ImageView) itemview.findViewById(R.id.pageviewer_image);
-        TextView textView=(TextView) itemview.findViewById(R.id.start_text);
         imageView.setImageResource(image[position]);
-//        textView.setText("Image Counter"+position);
+        imageView.setAdjustViewBounds(true);
+//      textView.setText("Image Counter"+position);
         container.addView(itemview);
         return itemview;
     }

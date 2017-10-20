@@ -10,7 +10,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="No Request Received"
+        android:text="No Messages Yet"
         android:gravity="center"
-        android:id="@+id/nochat"/>
+        android:id="@+id/nochat"
+        android:textSize="25dp"
+        android:textAlignment="center"/>
 </FrameLayout>

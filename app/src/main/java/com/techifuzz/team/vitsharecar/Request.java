@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -90,7 +91,7 @@ public class Request extends Fragment {
                             viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    CharSequence options[] = new CharSequence[]{"Call", "Send message"};
+                                    CharSequence options[] = new CharSequence[]{"Call", "Send message","Delete"};
 
                                     final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
@@ -112,6 +113,15 @@ public class Request extends Fragment {
                                                 chatIntent.putExtra("user_id", list_user_id);
                                                 chatIntent.putExtra("user_name", name);
                                                 startActivity(chatIntent);
+                                                }
+                                                if(i == 3){
+                                                    databaseReference.child(list_user_id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(getContext(),"Request Successfully Deleted",Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+
                                                 }
                                         }
                                     });

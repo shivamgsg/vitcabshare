@@ -12,45 +12,47 @@
         android:layout_height="36dp"
         android:layout_weight="0"
         android:src="@drawable/cool"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/message_text_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name_text_layout"
+        android:gravity="top"
         android:layout_marginLeft="10dp"
         android:layout_toEndOf="@+id/message_profile_layout"
+        android:background="@drawable/message_shape"
         android:padding="0dp"
+        android:layout_marginTop="10dp"
         android:text="Message Text"
         android:textColor="#444444"
         android:textSize="14sp"
-        android:visibility="gone"/>
+        android:maxHeight="80dp"
+        android:visibility="visible"/>
+    <!--<TextView-->
+        <!--android:id="@+id/name_text_layout"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_toEndOf="@+id/message_profile_layout"-->
+        <!--android:text="Display Name"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textSize="15sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:visibility="visible"/>-->
 
-    <TextView
-        android:id="@+id/name_text_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toEndOf="@+id/message_profile_layout"
-        android:text="Display Name"
-        android:textColor="@android:color/black"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/time_text_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/name_text_layout"
-        android:text="00:00"
-        android:textSize="12sp"
-        android:visibility="gone"/>
+    <!--<TextView-->
+        <!--android:id="@+id/time_text_layout"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:layout_toEndOf="@+id/name_text_layout"-->
+        <!--android:text="00:00"-->
+        <!--android:textSize="12sp"-->
+        <!--android:visibility="gone"/>-->
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -60,46 +62,47 @@
         android:layout_height="36dp"
         android:layout_weight="0"
         android:src="@drawable/cool"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/message_text_layout_sender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name_text_layout"
+        android:background="@drawable/message_shape"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="45dp"
         android:padding="0dp"
         android:text="Message Text"
         android:textColor="#444444"
         android:textSize="14sp"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
-    <TextView
-        android:id="@+id/name_text_layout_sender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="45dp"
-        android:text="Display Name"
-        android:textColor="@android:color/black"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:visibility="gone"/>
+    <!--<TextView-->
+        <!--android:id="@+id/name_text_layout_sender"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginRight="45dp"-->
+        <!--android:text="Display Name"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textSize="15sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:visibility="visible"/>-->
 
-    <TextView
-        android:id="@+id/time_text_layout_sender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="2dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="160dp"
-        android:text="00:00"
-        android:textSize="12sp"
-        android:visibility="gone"/>
+    <!--<TextView-->
+        <!--android:id="@+id/time_text_layout_sender"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginRight="160dp"-->
+        <!--android:text="00:00"-->
+        <!--android:textSize="12sp"-->
+        <!--android:visibility="gone"/>-->
 
 
 </RelativeLayout>

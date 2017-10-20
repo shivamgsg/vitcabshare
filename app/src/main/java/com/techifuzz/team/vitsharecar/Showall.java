@@ -64,6 +64,7 @@ private RecyclerView recyclerView;
         // Inflate the layout for this fragment
         View root=inflater.inflate(R.layout.fragment_showall, container, false);
         editText=(TextView) root.findViewById(R.id.textview_date);
+        editText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.funnel, 0, 0, 0);
         imageButton=(ImageButton) root.findViewById(R.id.search_btn);
         if(FirebaseAuth.getInstance().getCurrentUser()!=null) {
             final FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
@@ -318,11 +319,11 @@ private RecyclerView recyclerView;
         public void setThumb_image(String thumb_image, Context context)
         {
             CircleImageView userimage=(CircleImageView) mview.findViewById(R.id.circleImageView);
-            Picasso.with(context).load(thumb_image).placeholder(R.drawable.cool).into(userimage);
+            Picasso.with(context).load(thumb_image).placeholder(R.drawable.man).into(userimage);
         }
         public void setImage(String image,Context context){
             CircleImageView userimage=(CircleImageView) mview.findViewById(R.id.circleImageView);
-            Picasso.with(context).load(image).placeholder(R.drawable.cool).into(userimage);
+            Picasso.with(context).load(image).placeholder(R.drawable.man).into(userimage);
         }
 
     }

@@ -7,7 +7,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/edit_travel"
-            android:title="New Request"
+            android:title="Add Travelling Info"
             />
 
         <item

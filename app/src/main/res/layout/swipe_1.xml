@@ -4,15 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/start_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="hello" />
 
     <ImageView
         android:id="@+id/pageviewer_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY" />
 
 </LinearLayout>

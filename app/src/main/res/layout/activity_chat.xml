@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.techifuzz.team.vitsharecar.ChatActivity">
+    tools:context="com.techifuzz.team.vitsharecar.ChatActivity"
+    android:fitsSystemWindows="true">
     <include
         android:id="@+id/chat_app_bar"
         layout="@layout/toolbar_for_chat"/>
@@ -56,7 +57,8 @@
             android:paddingBottom="12dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:paddingTop="14dp" />
+            android:paddingTop="14dp"
+            android:fitsSystemWindows="true"/>
 
         <ImageButton
             android:id="@+id/chat_send_btn"

@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@+id/indicator"
-            android:text="Next"
+            android:text="Skip"
             android:layout_marginLeft="10dp"
             android:gravity="center"
             android:textColor="#EEEEEE"
@@ -39,7 +39,7 @@
             android:layout_alignParentEnd="true"
             android:textColor="#EEEEEE"
             android:gravity="center"
-            android:text="Skip"
+            android:text="Next"
             android:layout_marginRight="10dp"
             android:id="@+id/skip"/>
     </RelativeLayout>

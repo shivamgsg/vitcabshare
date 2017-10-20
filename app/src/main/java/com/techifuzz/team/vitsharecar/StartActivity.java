@@ -36,7 +36,7 @@ public class StartActivity extends AppCompatActivity {
         viewPager.setAdapter(customswipe);
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
-        TextView textView=(TextView) findViewById(R.id.skip);
+        final TextView textView=(TextView) findViewById(R.id.next);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,12 +45,23 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        final TextView textView1=(TextView) findViewById(R.id.next);
+        final TextView textView1=(TextView) findViewById(R.id.skip);
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Dotcount=viewPager.getChildCount();
-                viewPager.setCurrentItem((viewPager.getCurrentItem()<Dotcount)?viewPager.getCurrentItem()+1:0);
+                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                if(viewPager.getCurrentItem()==1){
+                    textView.setVisibility(View.INVISIBLE);
+                    textView1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent reg_intent=new Intent(StartActivity.this,Main3Activity.class);
+                            startActivity(reg_intent);
+
+                        }
+                    });
+                }
             }
         });
  }

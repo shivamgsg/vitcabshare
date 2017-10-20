@@ -18,24 +18,17 @@ import android.view.Display;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
-
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
@@ -119,31 +112,48 @@ mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCom
     @Override
     public void onComplete(@NonNull Task<AuthResult> task) {
         if (task.isSuccessful()) {
+
             processdialog1.dismiss();
-//            String current_user_id=mAuth.getCurrentUser().getUid();
             String token_id= FirebaseInstanceId.getInstance().getToken();
             FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
             String uid=current_user.getUid();
             mDatebase= FirebaseDatabase.getInstance().getReference().child("user").child(uid);
-            Map datama=new HashMap<String, String>();
+            Map datama=new HashMap<>();
             datama.put("token",token_id);
-//            Map datamap=new HashMap<String, String>();
-//            datamap.put("token",token_id);
 
-
-//            databaseReference.updateChildren(datamap);
             mDatebase.updateChildren(datama).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
-                    Intent mainintent = new Intent(Login.this, MainActivity.class);
-                    mainintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(mainintent);
-                    finish();
+                    mDatebase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String num=dataSnapshot.child("number").getValue().toString();
+                            if(num.equals("default"))
+                            {
+                                Intent mainintent = new Intent(Login.this, Google_phonenumber.class);
+                                mainintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(mainintent);
+                                finish();
+
+                            }
+                            else
+                            {
+                                Intent mainintent = new Intent(Login.this, MainActivity.class);
+                                Toast.makeText(Login.this, "Successfully Signed In", Toast.LENGTH_SHORT).show();
+                                mainintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(mainintent);
+                                finish();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
 
                 }
             });
-
-
         } else {
             processdialog1.hide();
             Toast.makeText(Login.this, "Check your email-id or password", Toast.LENGTH_SHORT).show();

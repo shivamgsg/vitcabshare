@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="95dp"
     android:layout_marginBottom="2dp"
     android:layout_marginLeft="1dp"
     android:layout_marginRight="1dp"
@@ -11,9 +11,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="15dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/cool" />
 
@@ -21,17 +21,16 @@
         android:id="@+id/naame"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_marginTop="-10sp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/circleImageView"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginStart="15dp"
         android:textColor="#444444"
         android:textColorHint="#444444"
         android:layout_toRightOf="@+id/circleImageView"
         android:hint="Name"
-        android:textSize="18sp" />
+        android:textSize="16sp"
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/to_display"
@@ -43,17 +42,17 @@
         android:layout_alignStart="@+id/naame"
         android:textColor="#444444"
         android:textColorHint="#444444"
-        android:textSize="13sp"
+        android:textSize="12sp"
         android:hint="To"
         android:layout_below="@+id/naame" />
 
     <TextView
         android:id="@+id/to_word"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#444444"
         android:textColorHint="#444444"
-        android:textSize="13sp"
+        android:textSize="12sp"
         android:text="To"
         android:layout_below="@+id/to_display"
         android:layout_alignLeft="@+id/to_display" />
@@ -69,17 +68,18 @@
         android:layout_alignParentRight="true"
         android:layout_alignStart="@+id/to_word"
         android:hint="From"
-        android:textSize="13sp"
-        android:layout_above="@+id/time_display" />
+        android:textSize="12sp"
+        android:layout_below="@+id/to_word"
+        android:layout_above="@+id/date_display" />
 
     <TextView
         android:id="@+id/date_display"
-        android:layout_width="112dp"
+        android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:textColor="#444444"
         android:textColorHint="#444444"
         android:hint="Date"
-        android:textSize="13sp"
+        android:textSize="12sp"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/from_display" />
 
@@ -89,10 +89,12 @@
         android:layout_height="wrap_content"
         android:textColor="#444444"
         android:textColorHint="#444444"
-        android:layout_marginLeft="34dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginStart="51dp"
         android:hint="Time"
+        android:textSize="12sp"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/date_display" />
+        android:layout_toRightOf="@+id/date_display"
+        android:layout_below="@+id/from_display" />
 
 </RelativeLayout>

@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     textView.setText(dataSnapshot.child("name").getValue().toString());
                     String link = dataSnapshot.child("image").getValue().toString();
-                    Picasso.with(getBaseContext()).load(link).placeholder(R.drawable.cool).into(circleImageView1);
+                    Picasso.with(getBaseContext()).load(link).placeholder(R.drawable.man2).into(circleImageView1);
                 }
 
                 @Override

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -83,7 +84,6 @@ public class ChatActivity extends AppCompatActivity {
         mChatUser = getIntent().getStringExtra("user_id");
         final String userName = getIntent().getStringExtra("user_name");
         final String userimage=getIntent().getStringExtra("user_image");
-
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View action_bar_view = inflater.inflate(R.layout.chat_custom_bar, null);
         actionBar.setCustomView(action_bar_view);
@@ -255,7 +255,6 @@ public class ChatActivity extends AppCompatActivity {
         });
 
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

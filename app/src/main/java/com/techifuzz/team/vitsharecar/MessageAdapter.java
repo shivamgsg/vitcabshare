@@ -49,14 +49,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             super(view);
 
             messageText = (TextView) view.findViewById(R.id.message_text_layout);
-            messageTime=(TextView) view.findViewById(R.id.time_text_layout);
+//            messageTime=(TextView) view.findViewById(R.id.time_text_layout);
             profileImage = (CircleImageView) view.findViewById(R.id.message_profile_layout);
-            displayName = (TextView) view.findViewById(R.id.name_text_layout);
+//            displayName = (TextView) view.findViewById(R.id.name_text_layout);
 
             messageText1 = (TextView) view.findViewById(R.id.message_text_layout_sender);
-            messageTime1=(TextView) view.findViewById(R.id.time_text_layout_sender);
+//            messageTime1=(TextView) view.findViewById(R.id.time_text_layout_sender);
             profileImage1 = (CircleImageView) view.findViewById(R.id.message_profile_layout_sender);
-            displayName1 = (TextView) view.findViewById(R.id.name_text_layout_sender);
+//            displayName1 = (TextView) view.findViewById(R.id.name_text_layout_sender);
 
         }
     }
@@ -79,32 +79,32 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
                 if(mMessageList!=null) {
                     if (mMessageList.get(i).getFrom().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                        viewHolder.displayName.setVisibility(View.INVISIBLE);
-                        viewHolder.messageTime.setVisibility(View.INVISIBLE);
+//                        viewHolder.displayName.setVisibility(View.INVISIBLE);
+//                        viewHolder.messageTime.setVisibility(View.INVISIBLE);
                         viewHolder.messageText.setVisibility(View.INVISIBLE);
                         viewHolder.profileImage.setVisibility(View.INVISIBLE);
 
-                        viewHolder.displayName1.setVisibility(View.VISIBLE);
+//                        viewHolder.displayName1.setVisibility(View.VISIBLE);
                         viewHolder.messageText1.setVisibility(View.VISIBLE);
-                        viewHolder.messageTime1.setVisibility(View.VISIBLE);
+//                        viewHolder.messageTime1.setVisibility(View.VISIBLE);
                         viewHolder.profileImage1.setVisibility(View.VISIBLE);
 
-                        viewHolder.displayName1.setText(name);
+//                        viewHolder.displayName1.setText(name);
                         Picasso.with(viewHolder.profileImage1.getContext()).load(image).placeholder(R.drawable.cool).into(viewHolder.profileImage1);
                         viewHolder.messageText1.setText(c.getMessage());
 //                        viewHolder.messageTime1.setText(String.valueOf(c.getTime()));
                     } else {
-                        viewHolder.displayName.setVisibility(View.VISIBLE);
+//                        viewHolder.displayName.setVisibility(View.VISIBLE);
                         viewHolder.messageText.setVisibility(View.VISIBLE);
-                        viewHolder.messageTime.setVisibility(View.VISIBLE);
+//                        viewHolder.messageTime.setVisibility(View.VISIBLE);
                         viewHolder.profileImage.setVisibility(View.VISIBLE);
 
-                        viewHolder.displayName1.setVisibility(View.INVISIBLE);
-                        viewHolder.messageTime1.setVisibility(View.INVISIBLE);
+//                        viewHolder.displayName1.setVisibility(View.INVISIBLE);
+//                        viewHolder.messageTime1.setVisibility(View.INVISIBLE);
                         viewHolder.messageText1.setVisibility(View.INVISIBLE);
                         viewHolder.profileImage1.setVisibility(View.INVISIBLE);
 
-                        viewHolder.displayName.setText(name);
+//                        viewHolder.displayName.setText(name);
                         Picasso.with(viewHolder.profileImage.getContext()).load(image).placeholder(R.drawable.cool).into(viewHolder.profileImage);
                         viewHolder.messageText.setText(c.getMessage());
 //                        viewHolder.messageTime.setText(String.valueOf(c.getTime()));

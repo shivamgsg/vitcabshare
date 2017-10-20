@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,7 +94,7 @@ public class Account extends Fragment {
 
                 textView.setText(name);
                 if (!image.equals("default")) {
-                    Picasso.with(getContext()).load(image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.cool).into(circleImageView, new Callback() {
+                    Picasso.with(getContext()).load(image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.man).into(circleImageView, new Callback() {
                         @Override
                         public void onSuccess() {
 
@@ -101,7 +102,7 @@ public class Account extends Fragment {
 
                         @Override
                         public void onError() {
-                            Picasso.with(getContext()).load(image).placeholder(R.drawable.cool).into(circleImageView);
+                            Picasso.with(getContext()).load(image).placeholder(R.drawable.man).into(circleImageView);
 
                         }
                     });
@@ -161,7 +162,7 @@ public class Account extends Fragment {
         if (resultCode == RESULT_OK && requestCode==2) {
 
             Uri imageuri = data.getData();
-            CropImage.activity(imageuri).setMinCropWindowSize(800, 800).setMaxCropResultSize(1500, 1500).setAspectRatio(2, 2).start(getContext(), Account.this);
+            CropImage.activity(imageuri).setMinCropWindowSize(800, 800).setAspectRatio(2, 2).start(getContext(), Account.this);
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
 

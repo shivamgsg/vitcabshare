@@ -167,11 +167,6 @@ public class Edittravelrequest extends Fragment {
                             datamap.put("number", number);
                             databaseReference.setValue(datamap);
                             Toast.makeText(getContext(), "Your Request has been sent", Toast.LENGTH_LONG).show();
-                            Fragment fragment = new Showall();
-                            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                            fragmentTransaction.replace(R.id.frame_layout, fragment);
-                            fragmentTransaction.addToBackStack(null);
-                            fragmentTransaction.commit();
 
                         }
 

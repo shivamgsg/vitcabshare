@@ -1,5 +1,6 @@
 package com.techifuzz.team.vitsharecar;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,14 +18,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,9 +33,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -53,21 +49,22 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mA;
     private ImageButton imageButton;
     private DatabaseReference mUserRef;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new Edittravelrequest()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new Travel_final()).commit();
         }
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        mA= new FirebaseAuth.AuthStateListener() {
+        mA = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser()==null){
-                    Intent login=new Intent(MainActivity.this,StartActivity.class);
+                if (firebaseAuth.getCurrentUser() == null) {
+                    Intent login = new Intent(MainActivity.this, StartActivity.class);
                     login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(login);
                     finish();
@@ -77,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        imageButton=(ImageButton) findViewById(R.id.pinButton);
+        imageButton = (ImageButton) findViewById(R.id.pinButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
         });
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        textView=(TextView) navigationView.getHeaderView(0).findViewById(R.id.username);
+        textView = (TextView) navigationView.getHeaderView(0).findViewById(R.id.username);
         circleImageView1 = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.circleImageView4);
-        if(firebaseAuth.getCurrentUser()!=null) {
-            mUserRef=FirebaseDatabase.getInstance().getReference().child("user").child(firebaseAuth.getCurrentUser().getUid());
+        if (firebaseAuth.getCurrentUser() != null) {
+            mUserRef = FirebaseDatabase.getInstance().getReference().child("user").child(firebaseAuth.getCurrentUser().getUid());
             databaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(firebaseUser.getUid());
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -101,6 +98,16 @@ public class MainActivity extends AppCompatActivity {
                     textView.setText(dataSnapshot.child("name").getValue().toString());
                     String link = dataSnapshot.child("image").getValue().toString();
                     Picasso.with(getBaseContext()).load(link).placeholder(R.drawable.man2).into(circleImageView1);
+                    String num = dataSnapshot.child("number").getValue().toString();
+                    if (num.equals("default")) {
+                        firebaseAuth.removeAuthStateListener(mA);
+                        firebaseAuth.signOut();
+                        Toast.makeText(getBaseContext(), "Please verify your number and login again", Toast.LENGTH_SHORT).show();
+                        Intent startIntent = new Intent(MainActivity.this, Main3Activity.class);
+                        startActivity(startIntent);
+                        finish();
+
+                    }
                 }
 
                 @Override
@@ -109,9 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-       checknetconnection();
+        checknetconnection();
         drawerLayout.addDrawerListener(drawerToggle);
         setupDrawerToggle();
         setupDrawerContent(navigationView);
@@ -119,15 +124,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void checknetconnection() {
         boolean connected = false;
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-            //we are connected to a network
-            connected = true;
-        }
-        else {
-            connected = false;
-            Toast.makeText(MainActivity.this,"Internet not working",Toast.LENGTH_SHORT).show();
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+            } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+            }
+        } else {
+            Toast.makeText(getBaseContext(), "Internet Not Working", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -135,12 +139,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-//        firebaseAuth.addAuthStateListener(mA);
         if (firebaseAuth.getCurrentUser() == null) {
             sendToStart();
-        }
-        else
-        {
+        } else {
             mUserRef.child("online").setValue("true");
         }
     }
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
-        if(currentUser != null) {
+        if (currentUser != null) {
 
             mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
 
@@ -161,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout layout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        DrawerLayout layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (layout.isDrawerOpen(GravityCompat.START)) {
             layout.closeDrawer(GravityCompat.START);
         } else {
@@ -185,11 +186,13 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.show();
         }
     }
+
     public void setupDrawerToggle() {
         drawerToggle = new android.support.v7.app.ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerToggle.syncState();
 
     }
+
     private void sendToStart() {
         Intent startIntent = new Intent(MainActivity.this, StartActivity.class);
         startActivity(startIntent);
@@ -208,63 +211,60 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
     }
-public boolean selectDrawerItems(MenuItem item){
-    int id = item.getItemId();
 
-    if (id == R.id.edit_travel) {
-        Edittravelrequest edittravelrequest=new Edittravelrequest();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout,edittravelrequest,edittravelrequest.getTag()).commit();
+    public boolean selectDrawerItems(MenuItem item) {
+        int id = item.getItemId();
 
-    } else if (id == R.id.request) {
-        Intent intent = new Intent(MainActivity.this, Requestfinal.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        if (id == R.id.edit_travel) {
+            Travel_final travel_final = new Travel_final();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frame_layout, travel_final, travel_final.getTag()).commit();
 
-    } else if (id == R.id.chat) {
-        Chatting chatting=new Chatting();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout,chatting,chatting.getTag()).commit();
+        } else if (id == R.id.request) {
+            Intent intent = new Intent(MainActivity.this, Requestfinal.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
 
-    } else if (id == R.id.show_all) {
-        Showall showall=new Showall();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout,showall,showall.getTag()).commit();
+        } else if (id == R.id.chat) {
+            Chatting chatting = new Chatting();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.frame_layout, chatting, chatting.getTag()).commit();
 
-    }else if (id == R.id.review) {
-        Feedback feedback=new Feedback();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout,feedback,feedback.getTag()).commit();
+        } else if (id == R.id.review) {
+            Feedback feedback = new Feedback();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.frame_layout, feedback, feedback.getTag()).commit();
 
-    }else if (id == R.id.account) {
-        Account account=new Account();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout,account,account.getTag()).commit();
+        } else if (id == R.id.account) {
+            Account account = new Account();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.frame_layout, account, account.getTag()).commit();
 
-    }else if (id == R.id.aboutus) {
-        Aboutus aboutus=new Aboutus();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout,aboutus,aboutus.getTag()).commit();
+        } else if (id == R.id.aboutus) {
+            Aboutus aboutus = new Aboutus();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.frame_layout, aboutus, aboutus.getTag()).commit();
 
-    }else if (id == R.id.privacy) {
-        Privacy privacy=new Privacy();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout,privacy,privacy.getTag()).commit();
+        } else if (id == R.id.privacy) {
+            Privacy privacy = new Privacy();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.frame_layout, privacy, privacy.getTag()).commit();
 
-    }else if (id == R.id.opensou) {
-        Opensource opensource=new Opensource();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout,opensource,opensource.getTag()).commit();
+        } else if (id == R.id.opensou) {
+            Opensource opensource = new Opensource();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.frame_layout, opensource, opensource.getTag()).commit();
 
-    }else if (id == R.id.Logout) {
-        logout();
+        } else if (id == R.id.Logout) {
+            logout();
 
+        }
+
+        setTitle(item.getTitle());
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
-//    item.setChecked(true);
-    setTitle(item.getTitle());
-    drawerLayout.closeDrawer(GravityCompat.START);
-    return true;
-}
+
     private void logout() {
         if (mA != null) {
             firebaseAuth.removeAuthStateListener(mA);

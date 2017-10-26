@@ -7,33 +7,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wenchao.cardstack.CardStack;
 
 import me.relex.circleindicator.CircleIndicator;
 
 public class StartActivity extends AppCompatActivity {
 
-    private CardStack mCardStack;
-    private CardsDataAdapter mCardAdapter;
     private ViewPager viewPager;
     private int Dotcount;
+    private int currentpos;
    Customswipe customswipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_start);
-//        mCardStack = (CardStack) findViewById(R.id.container);
         setContentView(R.layout.startactivity);
-//        mCardStack.setContentResource(R.layout.card_view);
-//        mCardAdapter = new CardsDataAdapter(getApplicationContext());
-//        mCardAdapter.add("Welcome to VIT ShareCar");
-//        mCardAdapter.add("Find your travelling mates");
-//        mCardAdapter.add("Easy to use");
-//        mCardStack.setAdapter(mCardAdapter);
         viewPager = (ViewPager) findViewById(R.id.pageview);
         customswipe = new Customswipe(this);
         viewPager.setAdapter(customswipe);
+        viewPager.setOffscreenPageLimit(4);
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
         final TextView textView=(TextView) findViewById(R.id.next);
@@ -44,15 +35,35 @@ public class StartActivity extends AppCompatActivity {
                startActivity(reg_intent);
             }
         });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                currentpos = position;
+
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         final TextView textView1=(TextView) findViewById(R.id.skip);
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Dotcount=viewPager.getChildCount();
-                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-                if(viewPager.getCurrentItem()==1){
-                    textView.setVisibility(View.INVISIBLE);
+                viewPager.setCurrentItem(currentpos + 1);
+                if(currentpos==4){
+
                     textView1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {

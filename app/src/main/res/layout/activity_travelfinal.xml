@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.techifuzz.team.vitsharecar.Requestfinal">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appBarLayout1">
+
+        <include layout="@layout/toolbar"
+            android:id="@+id/toolbar_travel"/>
+
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#153243"
+            app:tabTextColor="#EEEEEE"
+            app:tabSelectedTextColor="#EEEEEE"
+            android:id="@+id/tab_layout1"/>
+
+
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewpager_travel"
+        android:layout_below="@+id/appBarLayout1">
+
+    </android.support.v4.view.ViewPager>
+
+
+
+</RelativeLayout>

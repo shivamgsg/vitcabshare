@@ -7,19 +7,15 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/edit_travel"
-            android:title="Add Travelling Info"
+            android:title="Rides"
             />
-
         <item
             android:id="@+id/request"
-            android:title="My Requests" />
+            android:title="My Ride Requests" />
 
         <item android:id="@+id/chat"
             android:title="Chat"/>
 
-        <item
-            android:id="@+id/show_all"
-            android:title="Show all Requests" />
 
     </group>
 

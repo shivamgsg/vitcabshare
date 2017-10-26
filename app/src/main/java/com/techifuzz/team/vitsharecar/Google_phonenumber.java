@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
@@ -44,6 +45,8 @@ public class Google_phonenumber extends AppCompatActivity {
     private String verificationid;
     private PhoneAuthProvider.ForceResendingToken mforceResendingToken;
     private ImageView imageView;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener mA;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,18 @@ public class Google_phonenumber extends AppCompatActivity {
 //        Display display = getWindowManager().getDefaultDisplay();
 //        int width = display.getWidth();
 //        int height = display.getHeight();
+        firebaseAuth = FirebaseAuth.getInstance();
+        mA = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser() == null) {
+                    Intent login = new Intent(Google_phonenumber.this, Main3Activity.class);
+                    login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(login);
+                    finish();
+                }
+            }
+        };
         inputLayout=(TextInputLayout) findViewById(R.id.textInputLayoutnumber12);
         textInputEditText=(TextInputEditText) findViewById(R.id.textInputEditTextnumber12);
         textInputEditText.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dial, 0, 0, 0);
@@ -116,6 +131,7 @@ public class Google_phonenumber extends AppCompatActivity {
                         @Override
                         public void onVerificationFailed(FirebaseException e) {
                             Toast.makeText(Google_phonenumber.this, "Verification Failed", Toast.LENGTH_SHORT).show();
+                            textInputEditText.setEnabled(true);
 
                         }
 
@@ -137,4 +153,23 @@ public class Google_phonenumber extends AppCompatActivity {
         });
 
     }
+//    @Override
+//    protected void onStop() {
+//        firebaseAuth.removeAuthStateListener(mA);
+//        firebaseAuth.signOut();
+//        super.onStop();
+//
+//    }
+
+    @Override
+    public void onBackPressed() {
+    }
+
+//    @Override
+//    protected void onDestroy() {
+//        firebaseAuth.removeAuthStateListener(mA);
+//        firebaseAuth.signOut();
+//        super.onDestroy();
+//
+//    }
 }

@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
             <ImageButton
                 android:id="@+id/search_btn"
                 android:layout_width="wrap_content"
@@ -18,14 +17,14 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="5dp"
                 android:background="@android:color/white"
-                app:srcCompat="@drawable/clearsearch"
+                app:srcCompat="@drawable/ic_clear_black_18dp"
                 android:layout_above="@+id/userlist" />
 
         <TextView
             android:layout_width="250dp"
             android:layout_height="25dp"
             android:id="@+id/textview_date"
-            android:hint="Choose Date required"
+            android:hint="Search By Date"
             android:gravity="center"/>
 
 

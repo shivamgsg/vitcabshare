@@ -127,8 +127,8 @@ public class Main3Activity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            final String name=account.getDisplayName();
                             final String email=account.getEmail();
+                            final String name=account.getDisplayName();
                             final String image=account.getPhotoUrl().toString();
                             final String device_token= FirebaseInstanceId.getInstance().getToken();
                             FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
@@ -148,11 +148,10 @@ public class Main3Activity extends AppCompatActivity {
                                             startActivity(new Intent(Main3Activity.this,MainActivity.class));
 
                                         }
-
                                     }
                                     else{
-                                        HashMap<String,String> hello=new HashMap<String, String>();
-                                        hello.put("name",name);
+                                        HashMap<String,String> hello=new HashMap<>();
+                                        hello.put("name", name);
                                         hello.put("email",email);
                                         hello.put("image",image);
                                         hello.put("thumb_image","default");

@@ -59,14 +59,14 @@ public class Account extends Fragment {
     }
 
     private CircleImageView circleImageView;
-    private TextView textView;
+    private TextView textView, getTextView;
     private DatabaseReference mdatabase;
     private DatabaseReference databaseReference;
     private FirebaseUser currentuser;
     private static final int GALLERY_PICK = 1;
     private StorageReference storageReference;
     private ProgressDialog progressDialog;
-    private Button button,getButton;
+    private Button button, getButton, button1;
     private DatabaseReference reference;
 
     @Override
@@ -77,7 +77,10 @@ public class Account extends Fragment {
 
         circleImageView = (CircleImageView) root.findViewById(R.id.profile_image1);
         textView = (TextView) root.findViewById(R.id.name_display);
+        getTextView = (TextView) root.findViewById(R.id.num_display);
+        getTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dial, 0, 0, 0);
         button = (Button) root.findViewById(R.id.button);
+        button1 = (Button) root.findViewById(R.id.num_change);
         storageReference = FirebaseStorage.getInstance().getReference();
         currentuser = FirebaseAuth.getInstance().getCurrentUser();
         String current_uid = currentuser.getUid();
@@ -89,10 +92,12 @@ public class Account extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String name = dataSnapshot.child("name").getValue().toString();
                 final String image = dataSnapshot.child("image").getValue().toString();
+                String num = dataSnapshot.child("number").getValue().toString();
 //                String email = dataSnapshot.child("email-id").getValue().toString();
 //                String thumb_image = dataSnapshot.child("thumb_image").getValue().toString();
 
                 textView.setText(name);
+                getTextView.setText(num);
                 if (!image.equals("default")) {
                     Picasso.with(getContext()).load(image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.man).into(circleImageView, new Callback() {
                         @Override
@@ -118,23 +123,23 @@ public class Account extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 2);
             }
         });
-        getButton=(Button) root.findViewById(R.id.button_remove);
-        FirebaseUser current_user= FirebaseAuth.getInstance().getCurrentUser();
-        String uid=current_user.getUid();
-        reference=FirebaseDatabase.getInstance().getReference().child("user").child(uid);
+        getButton = (Button) root.findViewById(R.id.button_remove);
+        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = current_user.getUid();
+        reference = FirebaseDatabase.getInstance().getReference().child("user").child(uid);
         getButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Map map=new HashMap<String,String>();
-                map.put("image","default");
+                final Map map = new HashMap<String, String>();
+                map.put("image", "default");
                 reference.updateChildren(map).addOnSuccessListener(new OnSuccessListener() {
                     @Override
                     public void onSuccess(Object o) {
-                        Toast.makeText(getContext(),"Profile picture removed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Profile picture removed", Toast.LENGTH_SHORT).show();
                     }
                 });
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -153,13 +158,20 @@ public class Account extends Fragment {
 
             }
         });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startIntent = new Intent(getContext(), Google_phonenumber.class);
+                startActivity(startIntent);
+            }
+        });
         return root;
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode==2) {
+        if (resultCode == RESULT_OK && requestCode == 2) {
 
             Uri imageuri = data.getData();
             CropImage.activity(imageuri).setMinCropWindowSize(800, 800).setAspectRatio(2, 2).start(getContext(), Account.this);
@@ -258,4 +270,5 @@ public class Account extends Fragment {
                 Exception error = result.getError();
             }
         }
-    }}
+    }
+}

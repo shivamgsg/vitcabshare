@@ -115,7 +115,7 @@
 
         <Button
             android:id="@+id/viewrequest"
-            android:layout_width="100dp"
+            android:layout_width="130dp"
             android:layout_height="45dp"
             android:layout_marginTop="17dp"
             android:background="@drawable/but_shadow"
@@ -128,11 +128,11 @@
 
         <Button
             android:id="@+id/delereq"
-            android:layout_width="100dp"
+            android:layout_width="130dp"
             android:layout_height="45dp"
             android:background="@drawable/but_shadow"
             android:gravity="center"
-            android:text="Delete REQUEST"
+            android:text="Delete Your Travelling Info"
             android:textColor="@color/colorPrimary"
             android:textSize="12sp"
             android:layout_marginRight="12dp"

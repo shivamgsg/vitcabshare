@@ -221,10 +221,17 @@ public class Profile extends AppCompatActivity {
                                     mshow.child(user_id).child(mcurrent_user.getUid()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            button.setEnabled(true);
-                                            mcurrent_state = "not_send";
-                                            button.setText("Send Request");
-                                            button.setEnabled(true);
+                                            oshow.child(mcurrent_user.getUid()).child(user_id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    button.setEnabled(true);
+                                                    mcurrent_state = "not_send";
+                                                    button.setText("Send Request");
+                                                    button.setEnabled(true);
+
+                                                }
+                                            });
+
                                         }
                                     });
 

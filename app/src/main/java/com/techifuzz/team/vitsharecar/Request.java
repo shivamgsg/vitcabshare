@@ -114,7 +114,7 @@ public class Request extends Fragment {
                                                 chatIntent.putExtra("user_name", name);
                                                 startActivity(chatIntent);
                                                 }
-                                                if(i == 3){
+                                                if(i == 2){
                                                     databaseReference.child(list_user_id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {

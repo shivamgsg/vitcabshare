@@ -1,8 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF">
 
 
@@ -10,35 +10,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-            <ImageButton
-                android:id="@+id/search_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginRight="5dp"
-                android:layout_alignParentRight="true"
-                android:background="@android:color/white"
-                app:srcCompat="@drawable/clearsearch"/>
+        <ImageButton
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@android:color/white"
+            app:srcCompat="@drawable/ic_clear_black_18dp" />
 
         <TextView
-            android:layout_width="340dp"
-            android:layout_centerHorizontal="true"
-            android:layout_height="40dp"
             android:id="@+id/textview_date"
+            android:layout_width="340dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
-            android:hint="Choose Date required"
-            android:gravity="center"/>
-
-
-
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:hint="Search By Date"
+            android:textSize="16sp" />
 
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/userlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/textview_date"
-            android:layout_marginTop="2dp"
-            android:id="@+id/userlist"/>
+            android:layout_marginTop="2dp" />
 
     </RelativeLayout>
 

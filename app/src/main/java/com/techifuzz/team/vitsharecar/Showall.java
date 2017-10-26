@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class Showall extends Fragment {
     private TextView editText;
     private ImageButton imageButton;
     private FirebaseRecyclerAdapter firebaseRecyclerAdapter;
+
 
     public static final String[] MONTHS = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
@@ -163,12 +165,13 @@ private RecyclerView recyclerView;
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editText.setText("Choose Date Required");
+                editText.setText("Search By Date");
                 final Query query1=databaseReference.orderByChild("date");
                 query1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (!dataSnapshot.exists()) {
+
 
                             Toast.makeText(getContext(),"No request",Toast.LENGTH_LONG).show();
                         }

@@ -26,8 +26,6 @@
         android:textSize="20sp"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="20dp"
-        android:layout_below="@+id/circleImageView4"
-        android:layout_alignRight="@+id/circleImageView4"
-        android:layout_alignEnd="@+id/circleImageView4" />
+        android:layout_below="@+id/circleImageView4"/>
 
 </RelativeLayout>

@@ -7,12 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-/**
- * Created by Mridul on 03-10-2017.
- */
 
 public class Customswipe extends PagerAdapter {
-    private int [] image={R.drawable.s1,R.drawable.s2,R.drawable.s3,R.drawable.s4,R.drawable.s5};
+    private int [] image={R.drawable.s3,R.drawable.s1,R.drawable.s2,R.drawable.s4,R.drawable.s5};
     private Context context;
     private LayoutInflater layoutInflater;
 
@@ -32,7 +29,6 @@ public class Customswipe extends PagerAdapter {
         ImageView imageView=(ImageView) itemview.findViewById(R.id.pageviewer_image);
         imageView.setImageResource(image[position]);
         imageView.setAdjustViewBounds(true);
-//      textView.setText("Image Counter"+position);
         container.addView(itemview);
         return itemview;
     }

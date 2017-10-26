@@ -126,12 +126,12 @@
         <Button
             android:id="@+id/delereq"
             android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignRight="@+id/spinner_1"
             android:layout_alignTop="@+id/viewrequest"
             android:background="@drawable/but_shadow"
             android:gravity="center"
-            android:text="Delete REQUEST"
+            android:text="Delete Your Travelling Info"
             android:textColor="@color/colorPrimary"
             android:textSize="15sp" />
     </RelativeLayout>

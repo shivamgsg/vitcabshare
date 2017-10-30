@@ -8,8 +8,8 @@
     android:titleTextColor="#EEEEEE"
     android:subtitleTextColor="#EEEEEE">
     <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:id="@+id/pinButton"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="10dp"

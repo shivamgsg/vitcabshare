@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="105dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginLeft="1dp"
+    android:layout_marginRight="1dp"
+    android:layout_marginTop="4dp"
+    android:background="@drawable/shape"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/cool" />
+
+    <TextView
+        android:id="@+id/naame"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="15dp"
+        android:textColor="#444444"
+        android:textColorHint="#444444"
+        android:layout_toRightOf="@+id/circleImageView"
+        android:hint="Name"
+        android:textSize="16sp"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/to_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/naame"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/naame"
+        android:textColor="#444444"
+        android:textColorHint="#444444"
+        android:textSize="16sp"
+        android:hint="To"
+        android:layout_below="@+id/naame" />
+
+    <TextView
+        android:id="@+id/to_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#444444"
+        android:textColorHint="#444444"
+        android:textSize="16sp"
+        android:text="To"
+        android:layout_below="@+id/to_display"
+        android:layout_alignLeft="@+id/to_display" />
+
+    <TextView
+        android:id="@+id/from_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/to_word"
+        android:textColor="#444444"
+        android:textColorHint="#444444"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/to_word"
+        android:hint="From"
+        android:textSize="12sp"
+        android:layout_below="@+id/to_word"
+        android:layout_above="@+id/date_display" />
+
+    <TextView
+        android:id="@+id/date_display"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:textColor="#444444"
+        android:textColorHint="#444444"
+        android:hint="Date"
+        android:textSize="16sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/from_display" />
+
+    <TextView
+        android:id="@+id/time_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#444444"
+        android:textColorHint="#444444"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="51dp"
+        android:hint="Time"
+        android:textSize="16sp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/date_display"
+        android:layout_below="@+id/from_display" />
+
+</RelativeLayout>

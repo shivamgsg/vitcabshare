@@ -1,0 +1,44 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/feedback"
+        >
+
+    <EditText
+        android:id="@+id/enter_message"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="Send us your feedback, comments, and suggestions!"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="#333333"
+        android:textColorHint="#333333"
+        android:maxLines="10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:backgroundTint="#333333"
+        android:inputType="textMultiLine"
+        android:textSize="13sp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:id="@+id/button_send_email"
+            android:layout_below="@+id/enter_message"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/but_shadow"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="100dp"
+            android:text="Submit"/>
+    </RelativeLayout>
+
+</FrameLayout>

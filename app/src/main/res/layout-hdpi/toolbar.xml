@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#153243"
+    android:theme="@style/appBarTheme"
+    android:titleTextColor="#EEEEEE"
+    android:subtitleTextColor="#EEEEEE">
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/pinButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="right"
+        android:background="#153243"
+        android:src="@drawable/acc1"
+        android:clickable="true"/>
+
+</android.support.v7.widget.Toolbar>

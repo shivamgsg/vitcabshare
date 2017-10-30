@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.techifuzz.team.vitsharecar.Main3Activity">
+
+    <TextView
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/button"
+        android:gravity="center"
+        android:text="Welcome to VIT ShareCar"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp" />
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/if_mail_1296373" />
+
+    <Button
+        android:id="@+id/signup_byn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/but_shadow"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Sign up using email"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/signin_byn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signup_byn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/but_shadow"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Sign IN using email"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googlebutton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signin_byn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        app:buttonSize="icon_only">
+
+    </com.google.android.gms.common.SignInButton>
+
+
+</RelativeLayout>

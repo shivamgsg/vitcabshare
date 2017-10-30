@@ -1,0 +1,124 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/shape"
+        android:id="@+id/hello">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageViewreq"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/cool" />
+
+        <TextView
+            android:id="@+id/naamereq"
+            android:layout_width="150dp"
+            android:layout_height="32dp"
+            android:textColor="#444444"
+            android:textColorHint="#444444"
+            android:layout_marginLeft="23dp"
+            android:layout_marginStart="23dp"
+            android:hint="Name"
+            android:textSize="23sp"
+            android:layout_alignTop="@+id/circleImageViewreq"
+            android:layout_toRightOf="@+id/circleImageViewreq"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/to_display_req"
+            android:textColor="#444444"
+            android:textColorHint="#444444"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/naamereq"
+            android:layout_alignStart="@+id/naamereq"
+            android:layout_centerVertical="true"
+            android:hint="To"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/to_word_req"
+            android:textColor="#444444"
+            android:textColorHint="#444444"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To"
+            android:layout_below="@+id/to_display_req"
+            android:layout_alignLeft="@+id/to_display_req"
+            android:layout_alignStart="@+id/to_display_req"
+            android:layout_above="@+id/from_display_req" />
+
+        <TextView
+            android:id="@+id/from_display_req"
+            android:textColor="#444444"
+            android:textColorHint="#444444"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/circleImageViewreq"
+            android:layout_alignLeft="@+id/to_word_req"
+            android:layout_alignStart="@+id/to_word_req"
+            android:hint="From"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/date_display_req"
+            android:textColor="#444444"
+            android:textColorHint="#444444"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/from_display_req"
+            android:layout_alignStart="@+id/from_display_req"
+            android:layout_below="@+id/from_display_req"
+            android:hint="Date" />
+
+        <TextView
+            android:id="@+id/time_display_req"
+            android:textColor="#444444"
+            android:textColorHint="#444444"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/date_display_req"
+            android:layout_marginLeft="71dp"
+            android:layout_marginStart="71dp"
+            android:layout_toEndOf="@+id/date_display_req"
+            android:layout_toRightOf="@+id/date_display_req"
+            android:hint="Time" />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/shape"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="4dp"
+        android:id="@+id/hello2"
+        android:layout_alignBottom="@+id/hello"
+        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="No request was found"
+        android:textSize="30sp"
+        android:textColor="#444444"
+        android:gravity="center"
+        android:id="@+id/norequestwwasfound"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    </RelativeLayout>

@@ -1,0 +1,138 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mani"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEE">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200px">
+
+
+        <TextView
+            android:id="@+id/from"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/to"
+            android:layout_toLeftOf="@+id/spinner_2"
+            android:layout_toStartOf="@+id/spinner_2"
+            android:gravity="center"
+            android:text="From"
+            android:textColor="#444"
+            android:textSize="20sp" />
+
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinner_2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/from"
+            android:layout_alignLeft="@+id/spinner_1"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/spinner_1"
+            android:layout_below="@+id/from"
+            android:layout_marginRight="20dp"
+            android:background="@null"
+            android:textColor="#444" />
+
+        <TextView
+            android:id="@+id/to"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="40dp"
+            android:layout_toLeftOf="@+id/spinner_2"
+            android:gravity="center"
+            android:text="To"
+            android:textColor="#444"
+            android:textSize="20sp" />
+
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinner_1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/from"
+            android:layout_marginRight="20dp"
+            android:background="@null"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/edit_travel_time"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/edit_travel_date"
+            android:layout_alignBottom="@+id/edit_travel_date"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@+id/edit_travel_date"
+            android:layout_toRightOf="@+id/edit_travel_date"
+            android:gravity="center"
+            android:hint="Time Of Travel"
+            android:textColor="#444"
+            android:textColorHint="#444"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/edit_travel_date"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/to"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="73dp"
+            android:gravity="center"
+            android:hint="Date of Travel"
+            android:textColor="#444"
+            android:textColorHint="#444"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/to"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="134dp"
+            android:background="@drawable/but_shadow"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="SUBMIT"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/viewrequest"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/edit_travel_date"
+            android:layout_below="@+id/button"
+            android:layout_marginTop="51dp"
+            android:background="@drawable/but_shadow"
+            android:gravity="center"
+            android:text="View your Travelling Info"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/delereq"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/spinner_1"
+            android:layout_alignTop="@+id/viewrequest"
+            android:background="@drawable/but_shadow"
+            android:gravity="center"
+            android:text="Delete Your Travelling Info"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</FrameLayout>
